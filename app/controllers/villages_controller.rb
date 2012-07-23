@@ -5,13 +5,7 @@ class VillagesController < ApplicationController
   # GET /villages
   # GET /villages.json
   def index
-   #  if $id_council == nil then 
-   #     $id_council = Council.order('id').first.id
-   #  end
-
    id_council = getcouncil(params[:council])
-
-
    @council =  Council.find(id_council)
    @villages =  @council.villages.order('id')
   end

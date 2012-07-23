@@ -168,7 +168,8 @@ class PgosController < ApplicationController
         id_city = params[:Village][:id].to_i 
         
         if id_street != nil then 
-          if Village.find(id_city).roads.where("id = #{$id_street}").first == nil then
+          
+          if Village.find(id_city).roads.find(:first, :conditions => ["id = #{id_street}"]) == nil then
             if Village.find(id_city).roads.first != nil then
               id_street = Village.find(id_city).roads.first.id
             else
@@ -233,7 +234,6 @@ class PgosController < ApplicationController
             if @addre.update_attributes(pvalue) then
              
             pvalue[:full_address] = @addre.addresfull 
-#            "#{Village.find($id_city).typ.to_s} #{Village.find($id_city).name_ukr.to_s} #{Road.find($id_street).typ.to_s} #{Road.find($id_street).value.to_s} #{params[:house]} #{params[:suf_house]}"
             @addre.update_attributes(pvalue)
             if @pgo.update_attributes(params[:pgo]) then
               redirect_to pgo_path({:id =>  @pgo.id, :pan => 0}), notice: 'Інформацію успішно оновлено'
