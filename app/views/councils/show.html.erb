@@ -1,0 +1,17 @@
+<%= link_to 'Редагувати', edit_council_path(@council) %> 
+<%=  render :partial => 'allpgo/goadmin'%>
+<p id="notice"><%= notice %></p>
+<p>
+  <b>Герцаївський район</b>
+
+</p>
+
+<p>
+  <b>Назва ради:</b>
+  <%= @council.name %>
+</p>
+
+<p>
+  <b>Тип:</b>
+  <%= @council.typ %>
+</p>

@@ -1,0 +1,34 @@
+<%= link_to 'Додати', :action => "new" %>
+<%=  render :partial => 'allpgo/goadmin'%>
+<h1>Ради</h1>
+<hr align="center" width="100%" color="#C0C0C0" /> 
+<table align ="center">
+<tr>
+
+<td width="20%"><p align="center"><i><b>Назва ради</b></i></td>
+<td width="30%"><p align="center"><i><b>Тип</b></i></td>
+<td width="30%"><p align="center"><i><b>Населені пункти</b></i></td>
+</tr>
+
+
+  
+<% @councils.each do |council| %>
+  <tr>
+
+    <td><p align="center"><%= link_to council.name, edit_council_path({:id => council.id})  %></td>
+    <td><p align="center"><%= link_to council.typ, edit_council_path({:id => council.id})  %></td>    
+    <%list =  council.villages.order('id')%>
+    <td><p align="center">
+       <% list.each do |vill| %>
+       <%= vill.fullname %> <br/>
+    <%end%>
+    </td>
+
+
+
+  </tr>
+<% end %>
+
+</table>
+<hr align="center" width="100%" color="#C0C0C0" /> 
+

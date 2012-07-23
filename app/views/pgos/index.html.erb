@@ -1,0 +1,73 @@
+<%= link_to_if (@book != nil), "Додати", new_pgo_path({:book => @book.id, :council => @council.id, :page => params[:page]}) %>
+<%= link_to_if (@book != nil), "До книг", books_path({:council => @council.id, :page => getbookpage(@book.id, 5)}) %>
+<%=  render :partial => 'allpgo/goadmin'%>
+
+
+<h1>Список об'єктів погосподарського обліку</h1>
+ <hr align="center" width="100%" color="#C0C0C0" /> 
+
+  <%if access_role then %>  
+<%=form_for :Council, :url => {:action => :selbook} do |f|%>
+<b> Рада:</b> 
+<%= f.collection_select(:id, Council.order('id'), :id, :name, {:selected => @council.id},{:onchange => 'submit()'}) %>
+<%end%>
+
+
+<%else%>
+
+
+<b> Рада:</b> <%=  @council.name %> 
+
+<%end%>
+<br/>
+<%=form_for :Book, :url => {:action => :selbook} do |f|%>
+<b> Оберить книгу:</b>
+<%=  f.collection_select(:id, @council.books.order('num'), :id, :numformat, { :selected => @book_id},{:onchange => 'submit()'}) %>
+<%= number_field_tag("council", @council.id, {:type => "hidden"}) %>
+<%end%>
+<br/>
+
+<%  if @book != nil then %>
+
+  <table>
+<tr>
+<td style="border: solid black 1px" width="10%"><p align="center"><i><b>Номер об'екту</b></i></td>
+<td style="border: solid black 1px" width="10%"><p align="center"><i><b>Тип об'екту</b></i></td>
+<td style="border: solid black 1px" width="20%"><p align="center"><i><b>Дата обходу</b></i></td>
+<td style="border: solid black 1px" width="10%"><p align="center"><i><b>Відповідальна особа</b></i></td>
+<td style="border: solid black 1px" width="20%"><p align="center"><i><b>Адреса</b></i></td>
+<td style="border: solid black 1px" width="20%"><p align="center"><i><b>Додаткова інформація</b></i></td>
+</tr>
+
+
+<div class="digg_pagination">
+    <div clas="page_info">
+      <%= page_entries_info @pgos %>
+    </div>
+    <%= will_paginate @pgos, :container => false %>
+  </div>
+
+<% @pgos.each do |pgo| %>
+  <tr>
+
+    
+    <td style="border: solid black 1px"><p align="center"><%= link_to pgo.num_1.to_s.rjust(4,'0') , pgo_path({:id => pgo.id, :pan => 0}) %> </td>
+    <td style="border: solid black 1px"><p align="center"><%= link_to pgo.num_2 , pgo_path({:id => pgo.id, :pan => 0}) %></td>
+    <td style="border: solid black 1px"><p align="center"><%= pgo.datezap %></td>
+    <td style="border: solid black 1px"><p align="center"><%= pgo.otvetstv  %></td>
+     <td style="border: solid black 1px"><p align="center"> <%=  link_to_if  (not pgo.address_id == nil), Addre.find(pgo.address_id).addresfull , pgo_path({:id => pgo.id, :pan => 0}) %></td>
+     <td style="border: solid black 1px"><p align="center"><%=  pgo.comment %></td>
+     
+
+  </tr>
+<% end %>
+
+</table>
+<%else%>
+<h1><p align="center">Не має книг</h1>
+
+<%end%>
+
+
+
+ <hr align="center" width="100%" color="#C0C0C0" /> 

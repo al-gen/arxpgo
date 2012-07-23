@@ -1,0 +1,10 @@
+<%= link_to 'До списку', :action => "index", :city => @village.id, :council => @council.id%>
+<%=  render :partial => 'allpgo/goadmin'%>
+<h1>Редагування вулиці</h1>
+ <hr align="center" width="100%" color="#C0C0C0" />
+<b> Населений пункт:</b> <br/>
+<%=  @village.fullname %>
+<br/>
+<%= render 'form' %>
+
+ <hr align="center" width="100%" color="#C0C0C0" />

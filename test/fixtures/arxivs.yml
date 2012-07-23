@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  numrish: MyString
+  numses: MyString
+  numsoz: MyString
+  rada: MyString
+  dateprin: 2012-03-29
+  shodo: MyString
+  linkfile: MyString
+  comment: MyString
+
+two:
+  numrish: MyString
+  numses: MyString
+  numsoz: MyString
+  rada: MyString
+  dateprin: 2012-03-29
+  shodo: MyString
+  linkfile: MyString
+  comment: MyString

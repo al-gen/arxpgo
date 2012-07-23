@@ -1,0 +1,25 @@
+<%= javascript_include_tag "jquery-ui-1.8.19.custom.min" %>
+<%= javascript_include_tag "pgonum" %> 
+
+<div>
+  <%=  render :partial => 'operation' %>
+</div>
+
+<div id="findstatus">   
+
+<%=  form_tag("/allpgo/setpgo", :method => "get") do -%>
+
+<%= label_tag 'searchinput', "Пошук об'єкту обліку:" %> 
+
+<%= text_field_tag("searchinput", nil, { :class => "ui-autocomplete-input", :size => 90}) %>  
+<%= button_tag('Перейти') %> <br>
+<%= radio_button_tag('surname','address',false,{})%> 
+<label for="address">за адресою</label>  
+<%= radio_button_tag('surname','surname',true,{})%>
+<label for="surname">за власником</label> 
+<%= radio_button_tag('surname','number',false,{})%>
+<label for="number">за номером об'єкту обліку</label> 
+<%= text_field_tag("pgo-id", -1, { :size => 1, :type => "hidden"}) %>  
+<%-end%>
+</div>
+

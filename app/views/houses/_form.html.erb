@@ -1,0 +1,149 @@
+<%= javascript_include_tag :houses %>
+<%= form_for(@house) do |f| %>
+  <% if @house.errors.any? %>
+    <div id="error_explanation">
+      <h2>Помилок: <%= @house.errors.count %>. Необхідно виправити наступне:</h2>            
+
+      <ul>
+      <% @house.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% if @prophouse.errors.any? %>
+    <div id="error_explanation">
+      <h2>Помилок: <%=@prophouse.errors.count %>. Необхідно виправити наступне:</h2>        
+
+
+      <ul>
+      <% @prophouse.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+
+ <table >
+<tr>
+<td width="20%"><p align="center"><i><b>Власник/користувач</b></i></td>
+<td width="50%"><p align="center"><i><b>Додаткові відомості</b></i></td>
+<td width="10%"><p align="center"><i><b>Рік побудови</b></i></td>
+<td width="10%"><p align="center"><i><b>Матеріал стін</b></i></td>
+<td width="10%"><p align="center"><i><b>Матеріал покрівлі</b></i></td>
+</tr>
+<tr>
+
+
+ <td><p align="center"><%= collection_select(:Per, :id, Per.where("pgo_id = #{@pgo.id}").order('id'), :id, :fullname, {:selected => @house.person_id},{})%>
+  <div class="field">
+    <td><p align="center"><%= f.text_area :comment,  :size => "50x2"  %></td>
+  </div>
+  <div class="field">
+    <td><p align="center"><%= f.date_select :date_build, { :start_year => 1900, :end_year => Time.now.year, :discard_day => true, :discard_month => true, :include_blank => true, :default => { :day => 1, :month => 1 }} %></td>
+  </div>
+  <div class="field">
+    <td><p align="center"><%= f.text_field :material_wall,:size => 10  %></td>
+  </div>
+  <div class="field">
+    <td><p align="center"><%= f.text_field :material_krovl,:size => 10  %></td>
+  </div>
+</tr>
+</table>
+<br/>
+<table>
+<tr>
+   
+<td width="10%"><p align="center"><i><b>Дата обходу</b></i></td>
+<td width="5%"><p align="center"><i><b>Загальна площа,м2</b></i></td>
+<td width="5%"><p align="center"><i><b>З неї площа літніх приміщень, м2</b></i></td>
+<td width="5%"><p align="center"><i><b>Житлова площа, м2</b></i></td>
+<td width="5%"><p align="center"><i><b>Кількість житлових кімнат</b></i></td>
+<td width="5%"><p align="center"><i><b>Водо- провод</b></i></td>
+<td width="5%"><p align="center"><i><b>Кана- лізація</b></i></td>
+<td width="5%"><p align="center"><i><b>Опалення</b></i></td>
+<td width="5%"><p align="center"><i><b>Гаряче водо- постачання</b></i></td>
+<td width="5%"><p align="center"><i><b>Ванна/ душова</b></i></td>
+<td width="5%"><p align="center"><i><b>Природний газ</b></i></td>
+<td width="5%"><p align="center"><i><b>Скраплений газ</b></i></td>
+<td width="5%"><p align="center"><i><b>Єлектрична плита</b></i></td>
+<td width="15%"><p align="center"><i><b>Відповідальна особа</b></i></td>
+
+</tr>  
+<%= fields_for @prophouse do |prop|%>
+<tr> 
+  <div class="field">
+
+    <td><p align="center"><%= prop.date_select :datezap, :start_year => 1980 %></td>
+  </div>
+<div class="field">
+
+   <td><p align="center"> <%= prop.text_field :s, :size => 10 %></td>
+  </div>
+  <div class="field">
+
+    <td><p align="center"><%= prop.text_field :s_summer, :size => 10  %></td>
+  </div>
+  <div class="field">
+
+    <td><p align="center"><%= prop.text_field :s_jitlova ,:size => 10  %></td>
+  </div>
+  <div class="field">
+
+    <td><p align="center"><%= prop.number_field :n_room,:size => 10  %></td>
+  </div>
+  <div class="field">
+
+    <td><p align="center"><%= prop.check_box :water %></td>
+  </div>
+  <div class="field">
+
+    <td><p align="center"><%= prop.check_box :kanaliz %></td>
+  </div>
+  <div class="field">
+
+    <td><p align="center"><%= prop.check_box :otoplen %></td>
+  </div>
+  <div class="field">
+
+    <td><p align="center"><%= prop.check_box :hot_water %></td>
+  </div>
+  <div class="field">
+
+    <td><p align="center"><%= prop.check_box :bath %></td>
+  </div>
+  <div class="field">
+
+    <td><p align="center"><%= prop.check_box :gas %></td>
+  </div>
+  <div class="field">
+
+    <td><p align="center"><%= prop.check_box :sgas %></td>
+  </div>
+  <div class="field">
+
+    <td><p align="center"><%= prop.check_box :el_plita %></td>
+  </div>
+
+  <div class="field">
+
+    <td><p align="center"><%= prop.text_field :otvetstv %></td>
+  </div>
+</tr>
+<%end %>
+</table>
+ <br/>
+<%= number_field_tag("pgo", @pgo.id, {:type => "hidden"}) %>   
+ 
+  <div class="actions" align="center">
+    <%= f.submit "Прийняти"%>
+  </div>
+
+<%end %>
+
+
+ 
+

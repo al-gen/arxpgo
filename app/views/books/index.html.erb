@@ -1,0 +1,55 @@
+<%= link_to 'Додати', {  :action => "new",:council => @council.id, :page => params[:page]}, {:title => "Додати погосподарську книгу" } %>
+<%=  render :partial => 'allpgo/goadmin'%>
+
+<h1>Погосподарські книги</h1>
+ <hr align="center" width="100%" color="#C0C0C0" /> 
+ <%if access_role then %>  
+<%=form_for :Council, :url => {:action => :selcouncil} do |f|%>
+<b> Рада: </b> 
+<%= f.collection_select(:id, Council.order('id'), :id, :name, {:selected => @council.id },{:onchange => 'submit()', :title => "Оберіть раду зі списку" }) %>
+<%end else%>
+
+<b> Рада: </b> <%= @council.name %>
+
+<%end%>
+
+
+ <br/>
+ <br/>
+
+  <table >
+<tr>
+<td width="10%"><p align="center"><i><b>Номер книги</b></i></td>
+<td width="20%"><p align="center"><i><b>Дата початку</b></i></td>
+<td width="20%"><p align="center"><i><b>Дата закінчення</b></i></td>
+<td width="50%"><p align="center"><i><b>Додаткові відомості</b></i></td>
+</tr>
+
+
+<div class="digg_pagination">
+    <div clas="page_info">
+      <%= page_entries_info @books %>
+    </div>
+    <%= will_paginate @books, :container => false %>
+  </div>
+
+<% @books.each do |book| %>
+  <tr>
+
+    <td><p align="center"><%= link_to book.num.to_s.rjust(4,'0'),  edit_book_path({:id => book.id}), :title => "Редагувати погосподарську книгу"   %> </td>
+    <td><p align="center"><%= link_to book.date_begin,  edit_book_path({:id => book.id}), :title => "Редагувати погосподарську книгу"   %></td>
+    <td><p align="center"><%= book.date_end %></td>
+    <td><p align="center"><%= book.comment %></td>
+    <td style="border: none;"><%= link_to '►' , { :action => "gobook", :id => book.id} , {:title => "Перейти до об'єктів книги" } %></td>    
+
+
+  </tr>
+<% end %>
+</table>  
+
+
+ <hr align="center" width="100%" color="#C0C0C0" /> 
+
+
+
+

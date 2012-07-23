@@ -1,0 +1,37 @@
+<%= javascript_include_tag "jquery.tools.min" %>
+<%= stylesheet_link_tag   "tabs.css" %>
+
+<%= link_to "До списку", pgos_path({:book => @book.id, :page => getnumpage(@pgo.id, @book.id, 5)})%>
+<%= link_to_if (@book != nil), "До книг", books_path({:council => @council.id, :page => getbookpage(@book.id, 5)}) %>
+<%=  render :partial => 'allpgo/goadmin'%>
+ <p id="notice"><%#= notice %></p>
+<ul class="css-tabs">
+  <li><a href=  <%=  "/pgos/shows?id=#{@pgo.id}" %> > Адреса об'єкту</a></li>
+  <li><a href=  <%=  pers_path({:id => @pgo.id}) %> > Члени домогосподарства</a></li>
+  <li><a href=  <%=  lands_path({:id => @pgo.id}) %> > Земельна ділянка</a></li>
+  <% if (@pgo.num_2 != 4) then %>
+     <li><a href=  <%= houses_path({:id => @pgo.id}) %> > Житловий будинок</a></li>
+  <%end%>
+  <% if (@pgo.num_2 != 5) then %>
+     <li><a href=  <%=  animals_path({:id => @pgo.id}) %> > Худоба та птиця</a></li>
+  <%end%>
+  <% if (@pgo.num_2 == 1) then %>
+      <li><a href= <%=  technics_path({:id => @pgo.id}) %> > Сільськогосподарська техніка</a></li>
+  <%end%>
+</ul>
+
+<div class="css-panes">
+  <div style="display:block"></div>
+</div>
+
+ <%= number_field_tag("panel-id", @panel_id, { :type => "hidden"}) %>  
+ <%= javascript_include_tag "panel" %>
+
+ <script type = "text/javascript">
+    $(function() {
+        n = $ ("#panel-id").val()
+        num =  parseInt(n)
+        $("ul.css-tabs").data("tabs").click(num)})
+ </script>
+ <br/>
+<hr align="center" width="100%" color="#C0C0C0" /> 

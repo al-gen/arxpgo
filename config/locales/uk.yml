@@ -1,0 +1,380 @@
+uk:
+  date:
+    abbr_day_names:
+    - нд.
+    - пн.
+    - вт.
+    - ср.
+    - чт.
+    - пт.
+    - сб.
+    abbr_month_names:
+    - 
+    - січ.
+    - лют.
+    - бер.
+    - квіт.
+    - трав.
+    - черв.
+    - лип.
+    - серп.
+    - вер.
+    - жовт.
+    - лист.
+    - груд.
+    day_names:
+    - неділя
+    - понеділок
+    - вівторок
+    - середа
+    - четвер
+    - п'ятниця
+    - субота
+    formats:
+      default: ! '%d.%m.%Y'
+      long: ! '%d %B %Y'
+      short: ! '%d %b'
+    month_names:
+    - 
+    - Січень
+    - Лютий
+    - Березень
+    - Квітень
+    - Травень
+    - Червень
+    - Липень
+    - Серпень
+    - Вересень
+    - Жовтень
+    - Листопад
+    - Грудень
+    order:
+    - :day
+    - :month
+    - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        few: близько %{count} години
+        many: близько %{count} годин
+        one: близько %{count} година
+        other: близько %{count} години
+      about_x_months:
+        few: близько %{count} місяців
+        many: близько %{count} місяців
+        one: близько %{count} місяця
+        other: близько %{count} місяця
+      about_x_years:
+        few: близько %{count} років
+        many: близько %{count} років
+        one: близько %{count} року
+        other: близько %{count} року
+      almost_x_years:
+        few: майже %{count} років
+        many: майже %{count} років
+        one: майже %{count} роки
+        other: майже %{count} років
+      half_a_minute: півхвилини
+      less_than_x_minutes:
+        few: менше %{count} хвилин
+        many: менше %{count} хвилин
+        one: менше %{count} хвилини
+        other: менше %{count} хвилини
+      less_than_x_seconds:
+        few: менше %{count} секунд
+        many: менше %{count} секунд
+        one: менше %{count} секунди
+        other: менше %{count} секунди
+      over_x_years:
+        few: більше %{count} років
+        many: більше %{count} років
+        one: більше %{count} року
+        other: більше %{count} року
+      x_days:
+        few: ! '%{count} дні'
+        many: ! '%{count} днів'
+        one: ! '%{count} день'
+        other: ! '%{count} дня'
+      x_minutes:
+        few: ! '%{count} хвилини'
+        many: ! '%{count} хвилин'
+        one: ! '%{count} хвилина'
+        other: ! '%{count} хвилини'
+      x_months:
+        few: ! '%{count} місяці'
+        many: ! '%{count} місяців'
+        one: ! '%{count} місяць'
+        other: ! '%{count} місяця'
+      x_seconds:
+        few: ! '%{count} секунди'
+        many: ! '%{count} секунд'
+        one: ! '%{count} секунда'
+        other: ! '%{count} секунди'
+    prompts:
+      day: День
+      hour: Година
+      minute: Хвилина
+      month: Місяць
+      second: Секунда
+      year: Рік
+  errors: &errors
+    format: ! '%{attribute} %{message}'
+    messages:
+      accepted: має бути прийнятий
+      blank: не може бути пустим
+      confirmation: не збігається з підтвердженням
+      empty: не може бути порожнім
+      equal_to: має дорівнювати %{count}
+      even: має бути парним
+      exclusion: зарезервовано
+      greater_than: має бути більше ніж %{count}
+      greater_than_or_equal_to: має бути більше ніж або дорівнювати %{count}
+      inclusion: не включено до переліку
+      invalid: недійсний
+      less_than: має бути менше ніж %{count}
+      less_than_or_equal_to: має бути менше ніж або дорівнювати %{count}
+      not_a_number: не є числом
+      not_an_integer: не є цілим числом
+      odd: має бути непарним
+      record_invalid: ! 'Виникли помилки: %{errors}'
+      taken: вже зайнята
+      too_long:
+        few: занадто довгий (максимум %{count} знаки)
+        many: занадто довгий (максимум %{count} знаків)
+        one: занадто довгий (максимум %{count} знак)
+        other: занадто довгий (максимум %{count} знаку)
+      too_short:
+        few: занадто короткий (мінімум %{count} знаки)
+        many: занадто короткий (мінімум %{count} знаків)
+        one: занадто короткий (мінімум %{count} знак)
+        other: занадто короткий (мінімум %{count} знаку)
+      wrong_length:
+        few: неправильна довжина (має бути %{count} знаки)
+        many: неправильна довжина (має бути %{count} знаків)
+        one: неправильна довжина (має бути %{count} знак)
+        other: неправильна довжина (має бути %{count} знаку)
+    template:
+      body: ! 'Помилки виявлено в таких полях:'
+      header:
+        few: ! '%{model} не збережено через %{count} помилки'
+        many: ! '%{model} не збережено через %{count} помилок'
+        one: ! '%{model} не збережено через %{count} помилку'
+        other: ! '%{model} не збережено через %{count} помилки'
+  helpers:
+    select:
+      prompt: ! 'Оберіть: '
+    submit:
+      create: Створити %{model}
+      submit: Зберегти %{model}
+      update: Зберегти %{model}
+  number:
+    currency:
+      format:
+        delimiter: ! ' '
+        format: ! '%n %u'
+        precision: 2
+        separator: ! ','
+        significant: false
+        strip_insignificant_zeros: false
+        unit: грн.
+    format:
+      delimiter: ! ' '
+      precision: 3
+      separator: ! ','
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: ! '%n %u'
+        units:
+          billion:
+            few: Мільярдів
+            many: Мільярдів
+            one: Мільярд
+            other: Мільярдів
+          million:
+            few: Мільйонів
+            many: Мільйонів
+            one: Мільйон
+            other: Мільйонів
+          quadrillion:
+            few: Квадрильйонів
+            many: Квадрильйонів
+            one: Кквадрильйон
+            other: Квадрильйонів
+          thousand:
+            few: Тисяч
+            many: Тисяч
+            one: Тисяча
+            other: Тисяч
+          trillion:
+            few: Трильйонів
+            many: Трильйонів
+            one: Трильйон
+            other: Трильйонів
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 1
+        significant: false
+        strip_insignificant_zeros: false
+      storage_units:
+        format: ! '%n %u'
+        units:
+          byte:
+            few: байти
+            many: байтів
+            one: байт
+            other: байту
+          gb: ГБ
+          kb: кБ
+          mb: МБ
+          tb: ТБ
+    percentage:
+      format:
+        delimiter: ''
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: ! ' та '
+      two_words_connector: ! ' і '
+      words_connector: ! ', '
+  time:
+    am: до полудня
+    formats:
+      default: ! '%a, %d %b %Y, %H:%M:%S %z'
+      long: ! '%d %B %Y, %H:%M'
+      short: ! '%d %b, %H:%M'
+    pm: по полудні
+  will_paginate:
+    previous_label: "&#9668; Назад"
+    next_label: "Вперед &#9658;"
+    page_gap: "&hellip;"
+ 
+    page_entries_info:
+      single_page:
+        zero:  "Не знайдено елементів"
+        one:   "Показаний елемент"
+        other: "Показано всього %{count} елементів"
+      single_page_html:
+        zero:  "Не знайдено елементів"
+        one:   "Показаний <b>1</b> елемент"
+        other: "Показано <b>всього&nbsp;%{count}</b> елементів"
+
+      multi_page: "Показано %{from} - %{to} з %{count} елементів"
+      multi_page_html: "Показано <b>%{from}&nbsp;-&nbsp;%{to}</b> з <b>%{count}</b> елементів"           
+       
+ 
+
+
+
+ 
+  # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
+  activemodel:
+    errors:
+      <<: *errors
+  activerecord:
+    models:
+
+    attributes:
+
+      addre:  
+        house: Номер дому
+        suf_house: Адреса
+        city_id: Індекс населеного пункту
+        rada_id: Індекс ради 
+        street_id: Індекс вулиці 
+      book:
+        num: Номер книги
+        date_begin: Дата початку
+        date_end: Дата завершення
+      council:
+        name: Назва ради
+      road:
+        value: Назва вулиці
+        typ: Тип вулиці
+      village:
+        name_ukr: Назва населеного пункту
+        typ: Тип населеного пункту
+      house:
+        date_build: Дата будівництва
+        material_wall: Матеріал стін
+        material_krovl: Матеріал покрівлі
+        person_id: Індекс власника
+      per:  
+        surname: Прізвище
+        name: Ім'я
+        midname: По батькові
+        count_men: Кількість власників або користувачів
+        s_all: Площа земельної ділянки
+        s_build: Площа обслуговування житлового будинку
+        s_osob_gosp: Площа для ведення особистого господарства
+        s_tov_gosp:  Площа для ведення товарного виробництва
+        s_arenda: Площа у оренді
+        s_pay: Площа паю
+      pgo:  
+        num_1: Номер об'єкту
+        num_2: Тип об'єкту
+      propanimal:
+        value: Кількість тварин
+      proptechnic:
+        value: Кількість техніки
+      prophouse: 
+        s: Площа будинку
+        s_summer: Площа літніх приміщень
+        s_jitlova: Житлова площа
+        n_room: Кількість кімнат
+      propland:
+        s_all: Площа земельних ділянок
+        s_build: Площа для будівництва, обслуговування житлового будинку
+        s_osob_gosp: Площа для ведення особистого селянського господарства
+        s_tov_gosp: Площа для ведення товарного сільсько- господарского виробництва
+        s_arenda: Площа у оренді
+        s_senokos: Площа для сінокосіння і випасання худоби
+        s_ogorod: Площа для індивідуального городництва
+        s_garden: Площа для індивідуального садівництва
+        s_sel_ugod: Площа сільськогосподарських угідь
+        s_rill: Рілля
+        s_bagat: Площа багаторічних насаджень
+        s_sinojat: Площа сіножаті та пасовищ
+    errors:
+      <<: *errors
+
+#для архиву      
+  mynone: "не визначено"
+  my_sign_in: "Вхід"
+  my_sign_head: "Вхід до системи"
+  my_sign_log: "Електрона адреса"
+  my_sign_pas: "Пароль"
+  my_button_seach: "Перейти"
+  my_add_arxiv: "Додати до архіву"
+  my_all_arxiv: "Зміст архіву рішень"
+  my_doc_count_fine: "Кількість знайдених архівних документів:"
+  my_img_del: "Видалити зображення"
+  my_show_edit: "Редагувати"
+  my_back: "Повернутися до меню архіву рішень"
+  my_version_print: "Версія для друку"
+  my_show_numrich: "Номер рішення:"
+  my_show_numses: "Номер сесії:"
+  my_show_numsoz: "Номер созиву:"
+  my_show_rada: "Рада:"
+  my_show_dateprin: "Дата прийняття рішення:"
+  my_show_shodo: "Щодо:"
+  my_show_per: "Стосовно мешканця:"
+  my_show_land: "Стосовно земельної ділянки (адреса):"
+  my_show_comment: "Коментар:"
+  my_form_numses: "Сесія:"
+  my_form_numsoz: "скликання:"
+  my_form_vid: "від:"
+  my_form_save: "Зберегти архівний документ"
+  my_form_addimg: "Додати зображення"
+  my_app_title: "Архів рішень"
+  my_app_name: "ММБГД (Архів рішень)"
+  my_app_pgo: "Погосподарський облік"
+  my_app_inwho: "Здійснено вхід користувача:"
+  my_app_exit: "Вихід?"
+  my_app_in: "Вхід до системи"
+  my_arxitect: "Архітектор"
+  my_golova: "Голова"

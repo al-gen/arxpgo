@@ -1,0 +1,72 @@
+<%= javascript_include_tag :person %>
+<%= form_for(@per) do |f| %>
+  <% if @per.errors.any? %>
+    <div id="error_explanation">
+      <h2>Помилок: <%=@per.errors.count %>. Необхідно виправити наступне:</h2>   
+   
+
+      <ul>
+      <% @per.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>
+<tr>
+<td width="10%"><p align="center"><i><b>Прізвище</b></i></td>
+<td width="10%"><p align="center"><i><b>Ім'я</b></i></td>
+<td width="10%"><p align="center"><i><b>По батькові</b></i></td>
+<td width="10%"><p align="center"><i><b>Місяць і рік прибуття</b></i></td>
+<td width="20%"><p align="center"><i><b>Мета прибуття</b></i></td>
+<td width="20%"><p align="center"><i><b>Адреса реєстрації місця проживання</b></i></td>
+<td width="10%"><p align="center"><i><b>Кількість членів домогос- подарства</b></i></td>
+<td width="10%"><p align="center"><i><b>Місяць і рік вибуття</b></i></td>
+
+</tr>
+<tr>
+  
+  <div class="field">
+
+    <td><p align="center"><i><b><%= f.text_field :surname,  :size => 20 %></b></i></td>
+  </div>
+  <div class="field">
+
+    <td><p align="center"><i><b><%= f.text_field :name,  :size => 20  %></b></i></td>
+  </div>
+
+  <div class="field">
+
+    <td><p align="center"><i><b><%= f.text_field :midname,  :size => 20  %></b></i></td>
+  </div>
+<div class="field">
+
+   <td><p align="center"><i><b><%= f.date_select :date_prib, {:discard_day => true, :include_blank => true, :start_year => 1950, :end_year => Time.now.year} %></b></i></td>
+  </div>
+  <div class="field">
+
+       <td><p align="center"><i><b><%= f.text_area :meta_prib,  :size => "30x4" %></b></i></td>
+  </div>
+  <div class="field">
+
+    <td><p align="center"><i><b><%= f.text_field :address_reg %></b></i></td>
+  </div>
+  <div class="field">
+
+       <td><p align="center"><i><b><%= f.number_field :count_men,  :size => 10%></b></i></td>
+  </div>
+  <div class="field">
+
+       <td><p align="center"><i><b><%= f.date_select :date_vib, {:discard_day => true, :start_year => 1950, :include_blank => true, :end_year => Time.now.year} %></b></i></td>
+  </div>
+
+
+</tr>
+</table>
+  </br> 
+<%= number_field_tag("pgo", @pgo.id, {:type => "hidden"}) %>      
+  <div class="actions" align="center">
+    <%= f.submit 'Прийняти' %>
+  </div>
+<% end %>

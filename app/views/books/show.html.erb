@@ -1,0 +1,35 @@
+<%= link_to 'Редагувати', edit_book_path(@book) %> 
+<%= link_to 'До списку',  :action => "index", :council => @council.id, :page => getbookpage(@book.id, 5)%>
+<%=  render :partial => 'allpgo/goadmin'%>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Рада:</b>
+  <%=  @council.name.to_s %>
+</p>
+<p>
+  <b>Номер книги:</b>
+  <%= @book.num %>
+</p>
+
+<p>
+  <b>Дата початку:</b>
+  <%= @book.date_begin %>
+</p>
+
+<p>
+  <b>Дата закінчення:</b>
+  <%= @book.date_end %>
+</p>
+
+<p>
+  <b>Рада:</b>
+  <%= @council.name %>
+</p>
+
+<p>
+  <b>Додаткові відомості:</b>
+  <%= @book.comment %>
+</p>
+

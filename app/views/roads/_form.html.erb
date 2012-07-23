@@ -1,0 +1,34 @@
+<%= form_for(@road) do |f| %>
+  <% if @road.errors.any? %>
+    <div id="error_explanation">
+       <h2>Помилок: <%=@road.errors.count %>. Необхідно виправити наступне:</h2>   
+
+
+      <ul>
+      <% @road.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label 'Назва вулиці' %><br />
+    <%= f.text_field :value %>
+  </div>
+  <div class="field">
+    <%= f.label 'Тип вулиці' %><br />
+    <%= f.text_field :typ %>
+  </div>
+  <div class="field">
+    <%= number_field_tag("city", @village.id, {:type => "hidden"}) %>
+     <%= number_field_tag("council", @council.id, {:type => "hidden"}) %>
+  </div>
+  </br> 
+
+  <div class="actions" align="center">
+    <%= f.submit 'Прийняти' %>
+  </div>
+<% end %>
+

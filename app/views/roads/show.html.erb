@@ -1,0 +1,21 @@
+<%= link_to 'Редагувати', edit_road_path(@road) %> 
+<%= link_to 'До списку', :action => "index", :city => @village.id, :council => @council.id%>
+<%=  render :partial => 'allpgo/goadmin'%>
+<p id="notice"><%= notice %></p>
+<p>
+  <b>Рада:</b>
+  <%=  @council.name.to_s %>
+</p>
+<p>
+  <b>Населений пункт:</b>
+  <%= @village.name_ukr %>
+</p>
+<p>
+  <b>Тип вулиці</b>
+  <%= @road.typ %>
+</p>
+<p>
+  <b>Назва вулиці:</b>
+  <%= @road.value %>
+</p>
+

@@ -1,0 +1,18 @@
+<%=  render :partial => 'goback'%>
+  <h2>
+          <ol> Адміністративні елементи
+  <hr align="center" width="100%" color="#C0C0C0" /> 
+             <li>
+            <%=  link_to_if  access_role, 'Робота з радами' ,councils_path %>
+          
+             </li><li>
+            <%= link_to 'Робота з населеними пунктами', villages_path %>   
+             </li><li>
+            <%= link_to 'Робота з вулицями', roads_path %> 
+             </li>
+             <hr align="center" width="100%" color="#C0C0C0" /> 
+         </ol> 
+    
+   </h2> 
+
+

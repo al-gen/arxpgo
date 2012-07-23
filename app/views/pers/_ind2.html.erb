@@ -1,0 +1,47 @@
+<% if @pers.count != 0 then %>
+<table>
+<tr>
+  
+  
+  
+<td width ="5%"><p align="center"><i><b>Прізвище</b></i></td>
+<td width ="5%"><p align="center"><i><b>Ім'я</b></i></td>
+<td width ="6%"><p align="center"><i><b>По батькові</b></i></td>
+<td><p align="center"><i><b>Місяць і рік&shy; прибуття</b></i></td>
+<td><p align="center"><i><b>Мета прибуття</b></i></td>
+<td><p align="center"><i><b>Адреса реєстрації&shy; місця проживання</b></i></td>
+<td><p align="center"><i><b>Кількість членів&shy; домогосподарства</b></i></td>
+<td><p align="center"><i><b>Місяць і &shy;рік вибуття</b></i></td>
+
+
+</tr>
+<%end%>
+ <% @pers.each do |per| %>
+  
+
+<tr>
+    <td><p align="center"><i><%= link_to per.surname, edit_per_path(per)   %></i></td>
+    <td><p align="center"><i><%= link_to per.name, edit_per_path(per)   %></i></td>
+    <td><p align="center"><i><%= link_to per.midname, edit_per_path(per)   %></i></td>
+    <td><p align="center"><i><%= per.date_prib %></i></td>
+    <td><p align="center"><i><%= per.meta_prib %></i></td>
+    <td><p align="center"><i><%= per.address_reg %></i></td>
+    <td><p align="center"><i><%= per.count_men %></i></td>
+    <td><p align="center"><i><%= per.date_vib %></i></td>
+
+    
+
+    
+    
+   
+     <td style="border: none;">
+    <%= link_to 'Видалити', per, confirm: 'Ви впевнені?', method: :delete %></td>
+
+</tr>
+
+  
+  
+
+
+<%end%>
+</table>

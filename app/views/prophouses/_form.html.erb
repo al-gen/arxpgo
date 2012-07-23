@@ -1,0 +1,103 @@
+<%= form_for(@prophouse) do |f| %>
+  <% if @prophouse.errors.any? %>
+    <div id="error_explanation">
+       <h2>Помилок: <%=@prophouse.errors.count %>. Необхідно виправити наступне:</h2>   
+
+
+      <ul>
+      <% @prophouse.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<table>
+<tr>
+   
+<td width="10%"><p align="center"><i><b>Дата обходу</b></i></td>
+<td width="5%"><p align="center"><i><b>Загальна площа,м2</b></i></td>
+<td width="5%"><p align="center"><i><b>З неї площа літніх приміщень, м2</b></i></td>
+<td width="5%"><p align="center"><i><b>Житлова площа, м2</b></i></td>
+<td width="5%"><p align="center"><i><b>Кількість житлових кімнат</b></i></td>
+<td width="5%"><p align="center"><i><b>Водо- провод</b></i></td>
+<td width="5%"><p align="center"><i><b>Кана- лізація</b></i></td>
+<td width="5%"><p align="center"><i><b>Опалення</b></i></td>
+<td width="5%"><p align="center"><i><b>Гаряче водо- постачання</b></i></td>
+<td width="5%"><p align="center"><i><b>Ванна/ душова</b></i></td>
+<td width="5%"><p align="center"><i><b>Природний газ</b></i></td>
+<td width="5%"><p align="center"><i><b>Скраплений газ</b></i></td>
+<td width="5%"><p align="center"><i><b>Єлектрична плита</b></i></td>
+<td width="15%"><p align="center"><i><b>Відповідальна особа</b></i></td>
+
+</tr>  
+
+<tr> 
+  <div class="field">
+
+    <td><p align="center"><%= f.date_select :datezap, :start_year => 1950 %></td>
+  </div>
+<div class="field">
+
+   <td><p align="center"> <%= f.number_field :s, :size => 10 %></td>
+  </div>
+  <div class="field">
+
+    <td><p align="center"><%= f.number_field :s_summer, :size => 10  %></td>
+  </div>
+  <div class="field">
+
+    <td><p align="center"><%= f.number_field :s_jitlova ,:size => 10  %></td>
+  </div>
+  <div class="field">
+
+    <td><p align="center"><%= f.number_field :n_room,:size => 10  %></td>
+  </div>
+  <div class="field">
+
+    <td><p align="center"><%= f.check_box :water %></td>
+  </div>
+  <div class="field">
+
+    <td><p align="center"><%= f.check_box :kanaliz %></td>
+  </div>
+  <div class="field">
+
+    <td><p align="center"><%= f.check_box :otoplen %></td>
+  </div>
+  <div class="field">
+
+    <td><p align="center"><%= f.check_box :hot_water %></td>
+  </div>
+  <div class="field">
+
+    <td><p align="center"><%= f.check_box :bath %></td>
+  </div>
+  <div class="field">
+
+    <td><p align="center"><%= f.check_box :gas %></td>
+  </div>
+  <div class="field">
+
+    <td><p align="center"><%= f.check_box :sgas %></td>
+  </div>
+  <div class="field">
+
+    <td><p align="center"><%= f.check_box :el_plita %></td>
+  </div>
+
+  <div class="field">
+
+    <td><p align="center"><%= f.number_field :otvetstv %></td>
+  </div>
+</tr>
+
+</table>
+ <br/>
+<%= number_field_tag("pgo", @pgo.id, {:type => "hidden"}) %>
+ <%= number_field_tag("house", @house.id, {:type => "hidden"}) %>    
+  <div class="actions" align="center">
+    <%= f.submit "Прийняти"%>
+  </div>
+<% end %>

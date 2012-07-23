@@ -1,0 +1,10 @@
+<div class="docstr">
+  <%= link_to "Документ №#{docline.numrich} від #{docline.dateprin}" , docline  %>
+  <%if @user_in%>
+    <div class="doclink">
+      <%= link_to 'Редагувати', edit_arxiv_path(docline) %> 
+      <%= link_to 'Видалити', docline, confirm: 'Підтвердити видалення з архиву?', method: :delete %>    
+    </div>
+  <%end%>
+</div>
+

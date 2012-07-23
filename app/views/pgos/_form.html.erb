@@ -1,0 +1,87 @@
+
+<%= form_for(@pgo) do |f| %>
+  <% if @pgo.errors.any? %>
+    <div id="error_explanation">
+     <h2>Помилок: <%=@pgo.errors.count %>. Необхідно виправити наступне:</h2>   
+
+
+      <ul>
+      <% @pgo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <% if @addre.errors.any? %>
+    <div id="error_explanation">
+     <h2>Помилок: <%=@addre.errors.count %>. Необхідно виправити наступне:</h2>   
+
+
+      <ul>
+      <% @addre.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+
+  <table border="1">
+<tr>
+<td width="10%"><p align="center"><i><b>Номер об'єкту</b></i></td>
+<td width="10%"><p align="center"><i><b>Тип об'єкту</b></i></td>
+<td width="20%"><p align="center"><i><b>Дата обходу</b></i></td>
+<td width="10%"><p align="center"><i><b>Відповідальна особа</b></i></td>
+<td width="20%"><p align="center"><i><b>Адреса</b></i></td>
+<td width="20%"><p align="center"><i><b>Додаткова інформація</b></i></td>
+</tr>
+ <div class="field">
+<tr>
+ 
+  
+    <td><p align="center"><i><b><%= f.number_field :num_1 , :size => 3 %></b></i></td>
+    <td><p align="center"><i><b><%= f.number_field :num_2 , :size => 3 %></b></i></td>
+    <td><p align="center"><i><b><%= f.date_select :datezap , :start_year => 1980 %></b></i></td>
+    <td><p align="center"><i><b><%= f.text_field :otvetstv %></b></i></td> 
+    <td><p align="center"><i><b>
+            
+            
+<b>Населенний пункт</b><br/>
+<%= collection_select(:Village, :id, Council.find(@council.id).villages.order('id'), :id, :name_ukr, {:selected => @addre.city_id},{:onchange => 'submit("addres")'})%> <br/>
+<b>Вулиця</b><br/>
+<%= collection_select(:Road, :id, Village.find(@addre.city_id).roads.order('id'), :id, :fullroad, {:selected => @addre.street_id},{:onchange => 'submit("addres")'})%><br/>
+<b>№ дому&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspСуфікс</b><br/>
+<%= text_field_tag('house', @addre.house, {:size => 2}) %>        
+<%= text_field_tag('suf_house', @addre.suf_house, {:size => 2}) %>        
+<%= number_field_tag("book", @book.id, {:type => "hidden"}) %>
+<%= number_field_tag("page", @page, {:type => "hidden"}) %>
+<%= number_field_tag("council", @council.id, {:type => "hidden"}) %>          
+    </b></i></td>
+     
+   
+
+     <td><p align="center"><i><b><%= f.text_area :comment, :size => "50x5" %></b></i></td>
+</tr>
+
+
+
+  </div>
+
+  </table>
+  </br> 
+
+  <div class="actions" align="center">
+    <%= f.submit 'Прийняти' %>
+  </div>
+
+<% end %>
+ 
+
+
+
+

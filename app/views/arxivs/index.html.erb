@@ -1,0 +1,20 @@
+<div>
+  <%=  render :partial => 'main_up_link', :locals => {:user_in => user_signed_in?} %>
+</div>
+<hr align="center" width="100%" color="#C0C0C0" /> 
+<div align="center"> 
+  <%=  render 'mseach' %>
+</div>
+<div id="doc_count_find">
+  <%= render :partial => 'doc_count_find', :locals => {:doclines => @doclines}%>
+</div>
+<div id="doclist">
+  <%=render :partial => 'docline', :collection => @doclines%>
+</div>
+
+
+
+
+
+
+

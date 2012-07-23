@@ -1,0 +1,32 @@
+<%= form_for(@village) do |f| %>
+  <% if @village.errors.any? %>
+    <div id="error_explanation">
+     <h2>Помилок: <%=@village.errors.count %>. Необхідно виправити наступне:</h2>   
+
+
+      <ul>
+      <% @village.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label 'Тип пункту' %><br />
+    <%= f.text_field :typ %>
+  </div>
+  <div class="field">
+    <%= f.label 'Назва пункту' %><br />
+    <%= f.text_field :name_ukr %>
+  </div>
+  <div class="field">
+    <%= f.label 'Поштовий індекс' %><br />
+    <%= f.number_field :poshta %>
+  </div>
+<%= number_field_tag("council", @council.id, {:type => "hidden"}) %>
+  </br> 
+
+  <div class="actions" align="center">
+    <%= f.submit 'Прийняти' %>
+  </div>
+<% end %>

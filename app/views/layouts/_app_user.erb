@@ -1,0 +1,6 @@
+<% if user_signed_in? %>  
+  <%= "#{t :my_app_inwho} #{current_user.fio_rol}" %>
+  <%= link_to "#{t :my_app_exit}", { :action => 'destroy', :controller => 'devise/sessions' }, :method => :delete %>
+<%  else %>
+  <%= link_to "#{t :my_app_in}", { :action => 'new', :controller => 'devise/sessions' } %>
+<% end %>   

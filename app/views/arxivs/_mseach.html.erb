@@ -1,0 +1,4 @@
+<%= form_tag('/arxivs/index',:remote => true) do %>
+<%= text_field_tag :mseach, params[:mseach], data: {autocomplete_source: url_for(:controller=>'arxivs',:action => 'getarx')}, :size => 90 %>
+<%= submit_tag "#{t :my_button_seach}"%>
+<%end%>

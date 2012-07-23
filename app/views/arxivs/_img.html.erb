@@ -1,0 +1,9 @@
+<%if @userin%>
+  <%=link_to "#{t :my_img_del} (#{img.linkfile})", url_for(:controller =>"arxivs", :action => "deleteimg", :id=> img.id) ,:remote => true %>
+<%else%>
+  <%= "(#{img.linkfile})"%>
+<%end%>
+<br>
+<%= image_tag(url_for(:controller=>"arxivs", :action=>"picture", :id=>img.id), :size => '595x842') %>
+<br>
+<hr align="center" width="60%" color="#C0C0C0" />

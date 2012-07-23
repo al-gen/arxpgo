@@ -1,0 +1,40 @@
+<p align ="right"> <%=  @council.name.to_s %> рада, книга № <%=  @book.numformat %> </p> 
+
+ <hr align="center" width="100%" color="#C0C0C0" /> 
+
+<br/>
+
+  <table border="1">
+<tr>
+<td width="10%"><p align="center"><i><b>Номер об'єкту</b></i></td>
+<td width="10%"><p align="center"><i><b>Тип об'єкту</b></i></td>
+<td width="20%"><p align="center"><i><b>Дата обходу</b></i></td>
+<td width="10%"><p align="center"><i><b>Відповідальна особа</b></i></td>
+<td width="20%"><p align="center"><i><b>Адреса</b></i></td>
+<td width="20%"><p align="center"><i><b>Додаткова інформація</b></i></td>
+</tr>
+
+<tr>
+ 
+  
+    <td><p align="center"><i><%= link_to  @pgo.numformat, edit_pgo_path({:id => @pgo.id})  %></i></td>
+    <td><p align="center"><i><%= link_to  @pgo.num_2, edit_pgo_path({:id => @pgo.id}) %></i></td>
+    <td><p align="center"><i><%= @pgo.datezap %></i></td>
+    <td><p align="center"><i><%=  @pgo.otvetstv %></i></td> 
+    <td><p align="center"><i> <%= link_to  @addre.addresfull, edit_pgo_path({:id => @pgo.id})   %> </i></td>
+    <td><p align="center"><i><b><%= @pgo.comment %></b></i></td>
+</tr>
+
+
+
+ 
+
+  </table>
+
+
+
+
+
+
+
+

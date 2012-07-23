@@ -1,0 +1,46 @@
+
+ <%= link_to 'Додати обхід', new_animal_path(:id => @pgo.id) %>
+<hr align="center" width="100%" color="#C0C0C0" /> 
+<br/>
+
+<div class="digg_pagination">
+    <div clas="page_info">
+      <%= page_entries_info @animals %>
+    </div>
+    <%= will_paginate @animals, :container => false %>
+  </div>
+ <% @animals.each do |animal| %>
+<table>
+  
+<tr>
+
+<td width="5%"><p align="center"><i><b>Номер об'єкту обліку</b></i></td>
+<td width="5%"><p align="center"><i><b>Дата обходу</b></i></td>
+    <% animal.propanimals.order('glossary_animal_id').each do |prop| %>
+       <td><p align="center"><i><b><%= Glossaryanimal.find(prop.glossary_animal_id).name %></b></i></td>
+
+
+
+<% end %>
+<td><p align="center"><i><b>Відповідальна особа</b></i></td>
+<td><p align="center"><i><b>Додаткові відомості</b></i></td>
+</tr>
+<tr>
+  
+    <td><p align="center"><i><%=  @pgo.fullnum%></i></td>
+  
+    <td><p align="center"><i><%=  link_to animal.datezap, edit_animal_path(animal)  %></i></td>
+  <% animal.propanimals.order('glossary_animal_id').each do |prop| %>
+    <td><p align="center"><i><%= prop.value %></i></td>
+  <% end %>
+    <td><p align="center"><i><%= animal.otvetstv %></i></td>
+    <td><p align="center"><i><%= animal.comment %></i></td>
+  
+     
+
+</tr>
+
+</table>
+<br/>
+
+<% end %>

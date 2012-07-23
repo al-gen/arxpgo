@@ -1,0 +1,154 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require_tree . 
+
+    width: auto;
+    height: 46px;
+
+    background-origin: content-box;
+
+    background-image: url(imgattic.png);
+    background-repeat: no-repeat;
+    background-position: center;
+*/
+#gerc_attic{
+  background-color: #587c26;
+  background-image: -webkit-linear-gradient(#77953a, #bcd0a1);
+  height: 75px;
+  color: white;
+  font-size: 2.1em;
+  text-decoration: none;  
+     border-bottom: 2px solid;
+}
+
+/* Определяет стиль блока содержащего ссылок расположенных в верхней части страницы */
+.gerc_uplink{
+font-size: 13pt;
+margin: 1% 1%;
+font-style: italic;
+}
+/* Определяет стиль ссылки которые расположены в верхней части страницы */
+.gerc_uplink_text{
+}
+/* Определяет стиль ссылки которые расположены в верхней части страницы (справа) */
+.gerc_uplink_text_r{
+float: right;
+}
+
+#span {
+    padding-left: 15px;
+    padding-top: 10px;
+  }
+ 
+#gerc_fon{
+    
+    padding: 5px 5px 5px 15px;
+    overflow: hidden; 
+
+}
+/* Блок содержащий подвал сайта */
+#gerc_basement{
+
+    
+    font-size: 80%;
+    color: blue;
+    font-style: italic;
+    clear: both;
+    position:relative;
+    bottom:0;
+    margin-right: 1em
+}
+
+
+
+#findstatus{
+   
+     width:655px;
+     margin: 10px auto;
+
+}
+
+html, body {
+
+    font: 85% Helmet, Freesans, sans-serif;
+    
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    padding: 0;
+    margin: 0;
+    outline: 0 none;
+ 
+    vertical-align: baseline;
+
+
+    margin: 0 auto;
+}
+table {
+    cellspacing:0; 
+    cellpadding:0; 
+    border-collapse:collapse;  
+
+
+}
+td {
+
+    border: solid black 1px;
+}
+
+
+a {
+    color: blue; 
+    text-shadow:2px 1px 1px silver;}
+a:visited	{
+    text-decoration: underline;
+    color: blueviolet; }
+
+a:hover	{
+    text-decoration: none;
+    color: #ff0000; }
+h1 {
+    font-size:2em;
+    line-height:1;
+    text-align: center;
+    
+}
+#notice {
+    color: green; }
+
+.field_with_errors {
+    padding: 2px;
+    margin: 0 auto;
+
+    background-color: red;
+    border: 2px solid red;
+    display: table; }
+
+#error_explanation {
+    width: 450px;
+    border: 2px solid red;
+    padding: 7px;
+    padding-bottom: 0;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+    h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff; }
+ul li {
+    font-size: 12px;
+    list-style: square; } 
+#container {
+   
+    height: auto;
+    margin: 0 auto;
+}
+
+strong, th {font-weight: bold;}

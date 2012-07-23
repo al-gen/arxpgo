@@ -1,0 +1,152 @@
+<%= javascript_include_tag :person %>
+<%= form_for(@per) do |f| %>
+  <% if @per.errors.any? %>
+    <div id="error_explanation">
+      <h2>Помилок: <%=@per.errors.count %>. Необхідно виправити наступне:</h2>   
+
+
+
+      <ul>
+      <% @per.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>
+<tr>
+<td width="10%"><p align="center"><i><b>Прізвище</b></i></td>
+<td width="10%"><p align="center"><i><b>Ім'я</b></i></td>
+<td width="10%"><p align="center"><i><b>По батькові</b></i></td>
+<td width="25%"><p align="center"><i><b>Дата народження</b></i></td>
+<td width="5%"><p align="center"><i><b>Стать</b></i></td>
+<td width="10%"><p align="center"><i><b>Голова / Сімейні відносини</b></i></td>
+<td width="25%"><p align="center"><i><b>Місце роботи (заняття) та його адреса, посада</b></i></td>
+</tr>
+
+<tr>
+  <div class="field">
+    <td><p align="center"><i><b><%= f.text_field :surname %></b></i></td>
+    <td><p align="center"><i><b><%= f.text_field :name %></b></i></td>
+    <td><p align="center"><i><b><%= f.text_field :midname %></b></i></td>
+    <td><p align="center"><i><b><%= f.date_select :borndate, { :include_blank => true, :start_year => 1900, :end_year => Time.now.year}%></b></i></td>
+    <td><p align="center"><i>
+          
+          <b>Чоловік</br><%= f.radio_button :sex, "true" %></br>
+           <b> Жінка</br><%= f.radio_button :sex, "false" %></b>
+          
+          
+          </b></i></td> 
+    <td><p align="center"><i><b><%= f.text_field :family, :size => "10"   %></b></i></td>
+    <td><p align="center"><i><b><%= f.text_area :job , :size => "30x3" %></b></i></td>
+  </div>
+
+</tr>
+</table>
+  <br/>
+<table>
+<tr>
+  <td colspan="7"><p align="center"><i><b>Земельна &shy;ділянка, &shy; га</b></i></td>
+  <td colspan="2" width="30%"><p align="center"><i><b>Ведення особистого селянського господарства</b></i></td>
+</tr>
+<tr>
+<td  rowspan="2"><p align="center"><i><b>Всього</b></i></td>
+<td colspan="3"><p align="center"><i><b>з неї за цільовим призначенням для</b></i></td>
+<td colspan="2"><p align="center"><i><b>з них</b></i></td>
+<td  rowspan="2"><p align="center"><i><b>Додаткові відо&shy;мості</b></i></td>
+<td  rowspan="2"><p align="center"><i><b>Дата початку</b></i></td>
+<td  rowspan="2"><p align="center"><i><b>Дата закінчення</b></i></td>
+</tr>
+<tr>
+<td><p align="center"><i><b>О.Ж.Б.</b></i></td>
+<td><p align="center"><i><b>О.С.Г.</b></i></td>
+<td><p align="center"><i><b>Т.В.</b></i></td>
+<td><p align="center"><i><b>взятих в оренду</b></i></td>
+<td><p align="center"><i><b>наданих в оренду</b></i></td>
+
+<!--
+<td><p align="center"><i><b>будів&shy;ництва,&shy; обслуго&shy;вування житло&shy;вого&shy; будинку</b></i></td>
+<td><p align="center"><i><b>ведення&shy; осо&shy;бис&shy;того&shy; селян&shy;ського&shy; госпо&shy;дарства</b></i></td>
+<td><p align="center"><i><b>ведення&shy; товар&shy;ного&shy; сільсько-&shy;госпо&shy;дарского&shy; вироб&shy;ництва</b></i></td>
+<td><p align="center"><i><b>узя&shy;тих&shy; у оренду</b></i></td>
+<td><p align="center"><i><b>від&shy;даних&shy; у оренду</b></i></td>
+
+
+-->
+
+
+
+</tr>
+
+
+<tr> <div class="field">
+    <td><p align="center"><i><b><%= f.text_field :s_all, :size => 10 %></b></i></td>
+    <td><p align="center"><i><b> <%= f.text_field :s_build , :size => 10%></b></i></td>
+    <td><p align="center"><i><b><%= f.text_field :s_osob_gosp, :size => 10 %></b></i></td>
+    <td><p align="center"><i><b><%= f.text_field :s_tov_gosp, :size => 10 %></b></i></td>
+    <td><p align="center"><i><b><%= f.text_field :s_arenda , :size => 10%></b></i></td>
+    <td><p align="center"><i><b><%= f.text_field :s_arenda1 , :size => 10%></b></i></td>
+    <td><p align="center"><i><b><%= f.text_area :s_pay ,  :size => "30x3" %></b></i></td>
+
+     <td><p align="center"><i><b><%= f.date_select :date_begin_hoz, { :include_blank => true, :start_year => 1950, :end_year => Time.now.year} %></b></i></td>
+     <td><p align="center"><i><b><%= f.date_select :date_end_hoz, { :include_blank => true, :start_year => 1950, :end_year => Time.now.year} %></b></i></td>
+</div>
+</tr>
+</table>
+  <br/>
+<table>
+<tr>
+<td width="30%"><p align="center"><i><b>Відомості про тимчасову відсутність</b></i></td>
+<td width="10%"><p align="center"><i><b>Відмітка про повне вибуття</b></i></td>
+<td width="10%"><p align="center"><i><b>Відомості про пенсію</b></i></td>
+<td width="10%"><p align="center"><i><b>Відмітка про прибуття на територію ради</b></i></td>
+<td width="10%"><p align="center"><i><b>Персональніий рахунок</b></i></td>
+<td width="30%"><p align="center"><i><b>Дата заповнення</b></i></td>
+</tr>
+<tr>
+<div class="field">
+   <td><p align="center"><i>
+       <b>Дата вибуття<br/>
+       <%= f.date_select :date_vibil, { :include_blank => true, :start_year => 1950}%><br/>
+       <b>Причина вибуття<br/>
+       <%= f.text_area :prichina_vibil , :size => "30x2" %><br/>
+       <b>Дата повернення<br/>
+       <%= f.date_select :date_vosvr, { :include_blank => true, :start_year => 1950}%><br/>
+       <i>______________________________________</i></br>
+       <b>Дата вибуття<br/>
+       <%= f.date_select :date_vibil1, { :include_blank => true, :start_year => 1950}%><br/>
+       <b>Причина вибуття<br/>
+       <%= f.text_area :prichina_vibil1  , :size => "30x2" %><br/>
+       <b>Дата повернення<br/>
+       <%= f.date_select :date_vosvr1, { :include_blank => true, :start_year => 1950}%>
+   </b></i></td>
+ <td><p align="left"><i><b> 
+    <%= f.check_box :full_vibil %><b> Вибув</b><br/><br/>
+    <b>Пояснення<br/><p align="center"><%= f.text_area :comment_full_vibil  , :size => "15x12"%></b></i></td>
+  
+  <td><p align="left"><i>
+    <%= f.check_box :pensiya %><b>На пенсії</b><br/>
+    <%= f.check_box :invalidnost %><b>Має інвалідність</b><b/>
+    <%= f.check_box :soc_help %><b>Льготи</b><br/><br/>
+     <b>Додаткова інформація</b><br/><p align="center"><%= f.text_area :comment_lgoti,  :size => "15x10"   %></b></i></td>
+<td><p align="center"><i><b> 
+      <b>Регістрація на території ради</b><br/> <%= f.date_select :date_regist, { :include_blank => true, :start_year => 1950}%><br/>
+      <b>Попереднє місце реєстрації</b><br/><%= f.text_area :address_pred_regist , :size => "30x13" %></b></i></td>
+
+ 
+
+
+ <td><p align="center"><i><b><%= f.text_field :personal_account %></b></i></td> 
+   
+ <td><p align="center"><i><b><%= f.date_select :datezap , :start_year => 1950 %></b></i></td> 
+  </div>    
+
+</tr>
+  </table>
+  </br> 
+<%= number_field_tag("pgo", @pgo.id, {:type => "hidden"}) %>      
+  <div class="actions" align="center">
+    <%= f.submit "Прийняти"%>
+  </div>
+<% end %>

@@ -1,0 +1,106 @@
+<%= form_for(@propland) do |prop| %>
+  <% if @propland.errors.any? %>
+    <div id="error_explanation">
+       <h2>Помилок: <%=@propland.errors.count %>. Необхідно виправити наступне:</h2>   
+      
+
+
+      <ul>
+      <% @propland.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>
+
+<tr>
+
+<td rowspan="3"><p align="center"><i><b>Дата обходу</b></i></td>
+<td colspan="8"><p align="center"><i><b>Площа земельних ділянок, га</b></i></td>
+
+      <td  colspan="4"><p align="center"><i><b>Із загальної площі ділянок - площа сільськогосподарських угідь, га</b></i></td>
+
+      <td rowspan="3"><p align="center"><i><b>Відповідальна особа</b></i></td>
+</tr>
+<tr>
+      <td rowspan="2"><p align="center"><i><b>Всього</b></i></td>
+        <td colspan="7"><p align="center"><i><b>з неї за цільовим призначенням для</b></i></td>  
+             <td rowspan="2"><p align="center"><i><b>Всього</b></i></td>
+           <td colspan="3"><p align="center"><i><b>з них</b></i></td>  
+</tr>           
+<td><p align="center"><i><b>будівництва, обслуговування житлового будинку</b></i></td>
+<td><p align="center"><i><b>ведення особистого селянського господарства</b></i></td>
+<td><p align="center"><i><b>ведення товарного сільсько- господарского виробництва</b></i></td>
+<td><p align="center"><i><b>з них взятих в оренду</b></i></td>
+<td><p align="center"><i><b>сінокосіння і випасання худоби</b></i></td>
+<td><p align="center"><i><b>індивідуального городництва</b></i></td>
+<td><p align="center"><i><b>індивідуального садівництва</b></i></td>
+    
+      <td><p align="center"><i><b>рілля</b></i></td>
+      <td><p align="center"><i><b>багаторічні насадження</b></i></td>
+      <td><p align="center"><i><b>сіножаті, пасовища</b></i></td>
+</tr>
+
+  <tr>
+  
+  <div class="field">  
+    <td><p align="center"><%= prop.date_select :datezap, :start_year => 1980 %></td>
+  </div>
+  <div class="field">  
+    <td><p align="center"><%= prop.text_field :s_all, :size => 10 %></td>
+  </div>
+  <div class="field">  
+    <td><p align="center"><%= prop.text_field :s_build, :size => 10 %></td>
+  </div>
+  <div class="field">  
+    <td><p align="center"><%= prop.text_field :s_osob_gosp, :size => 10 %></td>
+  </div>
+  <div class="field">  
+    <td><p align="center"><%= prop.text_field :s_tov_gosp, :size => 10 %></td>
+  </div>
+  <div class="field">  
+    <td><p align="center"><%= prop.text_field :s_arenda, :size => 10 %></td>
+  </div>
+  <div class="field">  
+    <td><p align="center"><%= prop.text_field :s_senokos, :size => 10 %></td>
+  </div>
+  <div class="field">  
+    <td><p align="center"><%= prop.text_field :s_ogorod, :size => 10 %></td>
+  </div>
+  <div class="field">  
+    <td><p align="center"><%= prop.text_field :s_garden, :size => 10 %></td>
+  </div>
+
+
+  <div class="field">  
+    <td><p align="center"><%= prop.text_field :s_sel_ugod, :size => 10 %></td>
+  </div>
+  <div class="field">  
+    <td><p align="center"><%= prop.text_field :s_rill, :size => 10 %></td>
+  </div>
+  <div class="field">  
+    <td><p align="center"><%= prop.text_field :s_bagat, :size => 10 %></td>
+  </div>
+  <div class="field">  
+    <td><p align="center"><%= prop.text_field :s_sinojat, :size => 10 %></td>
+  </div>
+  <div class="field">  
+    <td><p align="center"><%= prop.text_field :otvetstv %></td>
+  </div>
+    
+  
+   </tr>
+    
+    
+
+
+</table>
+ <br/>
+<%= number_field_tag("pgo", @pgo.id, {:type => "hidden"}) %>
+ <%= number_field_tag("land", @land.id, {:type => "hidden"}) %>    
+  <div class="actions" align="center">
+    <%= prop.submit 'Прийняти' %>
+  </div>
+  <% end %>

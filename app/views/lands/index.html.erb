@@ -1,0 +1,104 @@
+
+<%= link_to_if (@lands.count == 0), 'Додати ділянку', new_land_path(:id => @pgo.id) %>
+<%  if @lands.count != 0 then id_land = @lands.first.id else id_land = nil end %>
+<%= link_to_if (@lands.count != 0), 'Додати обхід', new_propland_path({:id => id_land}) %><br/>
+ <hr align="center" width="100%" color="#C0C0C0" /> 
+<br/>
+
+
+ <% @lands.each do |land| %>
+  <table>
+<tr>
+
+<td width="10%"><p align="center"><i><b>Номер об'єкту обліку</b></i></td>
+<td width="30%"><p align="center"><i><b>Адреса</b></i></td>
+<td width="50%"><p align="center"><i><b>Додаткові відомості</b></i></td>
+</tr>
+<tr>
+  
+    <td><p align="center"><i><%= link_to @pgo.fullnum, edit_land_path(land)  %></i></td>
+    <td><p align="center"><i><%=  Addre.find(@pgo.address_id).addresfull %></i></td>
+    <td><p align="center"><i><%= land.comment %></i></td>
+      <td style="border: none;">
+    <%= link_to 'Видалити', land, confirm: 'Ви впевнені?', method: :delete %></td>
+
+</tr>
+
+</table>
+
+ <br/>  
+ <hr align="center" width="100%" color="#C0C0C0" /> 
+
+<%  @proplands = land.proplands.order('datezap DESC').paginate(:page => params[:page], :per_page => 3) %>
+  
+  
+
+
+<div class="digg_pagination">
+    <div clas="page_info">
+      <%= page_entries_info @proplands %>
+    </div>
+    <%= will_paginate @proplands, :container => false %>
+  </div>
+<table>
+
+<tr>
+
+<td rowspan="3"><p align="center"><i><b>Дата обходу</b></i></td>
+<td colspan="8"><p align="center"><i><b>Площа земельних ділянок, га</b></i></td>
+
+      <td  colspan="4"><p align="center"><i><b>Із загальної площі ділянок - площа сільськогосподарських угідь, га</b></i></td>
+
+      <td rowspan="3"><p align="center"><i><b>Відповідальна особа</b></i></td>
+</tr>
+<tr>
+      <td rowspan="2"><p align="center"><i><b>Всього</b></i></td>
+        <td colspan="7"><p align="center"><i><b>з неї за цільовим призначенням для</b></i></td>  
+             <td rowspan="2"><p align="center"><i><b>Всього</b></i></td>
+           <td colspan="3"><p align="center"><i><b>з них</b></i></td>  
+</tr>           
+<td><p align="center"><i><b>будівництва, обслуговування житлового будинку</b></i></td>
+<td><p align="center"><i><b>ведення особистого селянського господарства</b></i></td>
+<td><p align="center"><i><b>ведення товарного сільсько- господарского виробництва</b></i></td>
+<td><p align="center"><i><b>з них взятих в оренду</b></i></td>
+<td><p align="center"><i><b>сінокосіння і випасання худоби</b></i></td>
+<td><p align="center"><i><b>індивідуального городництва</b></i></td>
+<td><p align="center"><i><b>індивідуального садівництва</b></i></td>
+    
+      <td><p align="center"><i><b>рілля</b></i></td>
+      <td><p align="center"><i><b>багаторічні насадження</b></i></td>
+      <td><p align="center"><i><b>сіножаті, пасовища</b></i></td>
+</tr>
+
+ <% @proplands.each do |prop| %>  
+
+<tr>
+
+    <td><p align="center"><i><%=  link_to prop.datezap, edit_propland_path(prop)  %></i></td>
+    <td><p align="center"><i><%= prop.s_all %></i></td>
+    <td><p align="center"><i><%= prop.s_build %></i></td>
+    <td><p align="center"><i><%= prop.s_osob_gosp %></i></td>
+    <td><p align="center"><i><%= prop.s_tov_gosp %></i></td>
+    <td><p align="center"><i><%= prop.s_arenda %></i></td>
+    <td><p align="center"><i><%= prop.s_senokos %></i></td>
+    <td><p align="center"><i><%= prop.s_ogorod %></i></td>
+    <td><p align="center"><i><%= prop.s_garden %></i></td>
+
+    <td><p align="center"><i><%= prop.s_sel_ugod %></i></td>
+    <td><p align="center"><i><%= prop.s_rill %></i></td>
+    <td><p align="center"><i><%= prop.s_bagat %></i></td>
+    <td><p align="center"><i><%= prop.s_sinojat %></i></td>
+    <td><p align="center"><i><%= prop.otvetstv %></i></td>
+    
+   
+</tr>
+   
+ 
+<% end %>
+ </table> 
+
+<% end %>
+
+
+
+

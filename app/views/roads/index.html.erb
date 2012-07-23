@@ -1,0 +1,47 @@
+<%= link_to 'Додати', :action => "new", :city => @village.id, :council => @council.id %>
+<%=  render :partial => 'allpgo/goadmin'%>
+<h1>Вулиці</h1>
+
+<hr align="center" width="100%" color="#C0C0C0" /> 
+
+<%if access_role then %>  
+<%=form_for :Council, :url => {:action => :selcity} do |f|%>
+<b> Рада:</b> <br/>
+<%= f.collection_select(:id, Council.order('id'), :id, :name, {:selected => @council.id},{:onchange => 'submit()'}) %>
+
+
+<%end else%>
+
+
+<b> Рада:</b> <%=  @council.name %> <br/>
+<%end%>
+<%=form_for :Village, :url => {:action => :selcity} do |f|%>
+<b> Населений пункт:</b> 
+<%= f.collection_select(:id, @council.villages.order('id'), :id, :fullname, { :selected => @village.id},{:onchange => 'submit()'}) %>
+<%= number_field_tag("council", @council.id, {:type => "hidden"}) %>
+<%end%>
+
+ </br>
+  <table align="center">
+<tr>
+<td width="10%"><p align="center"><i><b>Тип</b></i></td>
+<td width="30%"><p align="center"><i><b>Назва вулиці</b></i></td>
+
+</tr>
+
+
+
+
+<%if @roads != nil then %>
+<% @roads.each do |road| %>
+  <tr>
+
+    <td><p align="center"><%= link_to road.typ, edit_road_path({:id => road.id}) %> </td>
+    <td><p align="center"><%= link_to road.value, edit_road_path({:id => road.id}) %></td>
+
+
+  </tr>
+<% end %>
+  <%end%>
+</table>
+<hr align="center" width="100%" color="#C0C0C0" /> 

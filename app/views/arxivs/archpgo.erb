@@ -1,0 +1,19 @@
+<div align="center">
+  <h2><%="Перелік архівних документів, стосовно господарства №#{@pgoid}"%></h2>
+  <p><%= link_to "До головної",{:action => "index"} %></p> 
+  <hr align="center" width="100%" color="#C0C0C0" />
+</div>
+
+<table>
+  <% @doclist.each do |a| %>
+  <tr>
+    <td width="20%"><%= link_to "Документ №#{a.numrich}" , a  %></td>
+    <td><%=a.shodo %></td>
+  </tr>
+  <%end%>
+</table>
+
+<div align="center">
+  <hr align="center" width="100%" color="#C0C0C0" />
+  <p><%= link_to "До головної",{:action => "index"} %></p> 
+</div>

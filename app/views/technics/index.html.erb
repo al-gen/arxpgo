@@ -1,0 +1,49 @@
+
+ <%= link_to 'Додати обхід', new_technic_path(:id => @pgo.id) %>
+ <hr align="center" width="100%" color="#C0C0C0" /> 
+ <br/>  
+<div class="digg_pagination">
+    <div clas="page_info">
+      <%= page_entries_info @technics %>
+    </div>
+    <%= will_paginate @technics, :container => false %>
+  </div>
+
+ <% @technics.each do |technic| %>
+<table>
+  
+<tr>
+
+<td width="5%"><p align="center"><i><b>Номер об'єкту обліку</b></i></td>
+<td width="5%"><p align="center"><i><b>Дата обходу</b></i></td>
+    <% technic.proptechnics.order('glossary_technic_id').each do |prop| %>
+       <td><p align="center"><i><b><%= Glossarytechnic.find(prop.glossary_technic_id).name %></b></i></td>
+
+
+
+<% end %>
+<td><p align="center"><i><b>Відповідальна особа</b></i></td>
+<td><p align="center"><i><b>Додаткові відомості</b></i></td>
+</tr>
+<tr>
+  
+
+  
+    <td><p align="center"><i><%= @pgo.fullnum%></i></td>
+    
+    <td><p align="center"><i><%= link_to technic.datezap, edit_technic_path(technic) %></i></td>
+  <% technic.proptechnics.order('glossary_technic_id').each do |prop| %>
+    <td><p align="center"><i><%= prop.value %></i></td>
+  <% end %>
+    <td><p align="center"><i><%= technic.otvetstv %></i></td>
+    <td><p align="center"><i><%= technic.comment %></i></td>
+ 
+    
+
+</tr>
+
+</table>
+<br/>
+
+<% end %> 
+  

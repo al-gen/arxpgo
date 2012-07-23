@@ -1,0 +1,2 @@
+$("#doclist").html("<%= escape_javascript(render :partial => 'docline', :collection => @doclines) %>");
+$("#doc_count_find").html("<%= escape_javascript(render :partial => 'doc_count_find', :locals => {:doclines => @doclines}) %>");

@@ -1,0 +1,65 @@
+
+<%= form_for(@animal) do |f| %>
+  <% if @animal.errors.any? %>
+    <div id="error_explanation">
+      <% count = 0%>
+      <%@propanimals.each do |p|%>  
+      <%if p.errors.any? then 
+        @prop = p
+        count = count + 1
+      end %>  
+      <%end%>  
+
+
+
+      <h2>Помилок: <%= count %>. Необхідно виправити наступне:</h2>
+
+      <ul>
+        
+      <% @prop.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ 
+<table align ="center">
+ <tr>
+  <td><p align="center"><i><b>Номер об'єкту обліку</b></i></td>
+  <td><p align="center"><i><b>Дата обходу</b></i></td>
+  <td><p align="center"><i><b>Відповідальна особа</b></i></td> 
+  <td><p align="center"><i><b>Додаткові відомості</b></i></td>
+ </tr>
+ <tr>
+  <td><p align="center"><%= "#{@pgo.numformat}-#{@pgo.num_2}"%></td>
+  <td><p align="center"><%= f.date_select :datezap , :start_year => 1980 %></td>
+  <td><p align="center"><%=  f.text_field :otvetstv, :size => 20 %></td>
+  <td><p align="center"><%= f.text_area :comment,  :size => "70x2" %></td>
+ </tr>
+</table>
+<br/>
+  <table align ="center">
+    <% Glossaryanimal.order('id').each do |prop| %>
+<tr>
+       <td width="50%"><p align="center"><i><b><%= prop.name %></b></i></td>
+       <td>
+           <div class="field">
+         <p align="center"><%= text_field_tag(prop.id, @proparray[prop.id], {:size => 10})%>
+           </div> 
+       </td>  
+       
+       
+</tr>
+    <% end %>
+
+
+</table>
+
+ <br/>
+<%= number_field_tag("pgo", @pgo.id, {:type => "hidden"}) %>   
+ 
+  <div class="actions" align="center">
+    <%= f.submit 'Прийняти'%>
+  </div>
+<% end %>

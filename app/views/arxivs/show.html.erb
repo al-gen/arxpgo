@@ -1,0 +1,65 @@
+<div align="center">
+  <%= render :partial => 'show_link', :locals => {:arxiv =>@arxiv,:user_in =>user_signed_in? } %>
+</div>
+
+<hr align="center" width="100%" color="#C0C0C0" />
+
+<p>
+  <b><%=t :my_show_numrich %> </b>
+  <%= @arxiv.numrich %>
+</p>
+
+<p>
+  <b><%=t :my_show_numses %> </b>
+  <%= @arxiv.numses %>
+</p>
+
+<p>
+  <b><%=t :my_show_numsoz %> </b>
+  <%= @arxiv.numsoz %>
+</p>
+
+<p>
+  <b><%=t :my_show_rada %></b>
+  <%= @rada.name %>
+</p>
+
+<p>
+  <b><%=t :my_show_dateprin %></b>
+  <%= @arxiv.dateprin %>
+</p>
+
+<p>
+  <b><%=t :my_show_shodo %> </b>
+  <%= @arxiv.shodo %>
+</p>
+ 
+<p>
+  <b><%=t :my_show_per%></b> 
+  <%= @s_person %>
+</p>
+
+<p>
+  <b><%=t :my_show_land%></b> 
+  <%= @s_address %>
+</p>
+
+
+<p>
+  <b><%=t :my_show_comment%></b>
+  <%= @arxiv.comment %>
+</p>
+
+  
+<hr align="center" width="100%" color="#C0C0C0" />
+
+<div align="center">
+  <%= render :partial => "img", :collection => @imgs %>
+</div>
+
+ <div align="center">
+   
+<hr align="center" width="100%" color="#C0C0C0" />
+  <%= render :partial => 'show_link', :locals => {:arxiv =>@arxiv,:user_in =>user_signed_in? } %>
+</div>
+

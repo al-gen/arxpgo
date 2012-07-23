@@ -1,0 +1,90 @@
+
+<%= link_to_if (@houses.count == 0), 'Додати будинок', new_house_path(:id => @pgo.id) %>
+<%  if @houses.count != 0 then id_house = @houses.first.id else id_house = nil end %>
+<%= link_to_if (@houses.count != 0), 'Додати обхід', new_prophouse_path({:id => id_house}) %><br/>
+ <hr align="center" width="100%" color="#C0C0C0" /> 
+<br/>
+
+
+ <% @houses.each do |house| %>
+<table>
+  
+<tr>
+<td width="20%"><p align="center"><i><b>Власник/користувач</b></i></td>
+<td width="50%"><p align="center"><i><b>Додаткові відомості</b></i></td>
+<td width="10%"><p align="center"><i><b>Рік побудови</b></i></td>
+<td width="10%"><p align="center"><i><b>Матеріал стін</b></i></td>
+<td width="10%"><p align="center"><i><b>Матеріал покрівлі</b></i></td>
+</tr>
+<tr>
+    <td><p align="center"><i><%=  if (house.person_id != nil) then Per.find(house.person_id).fullname end%></i></td>
+    <td><p align="center"><i><%= house.comment %></i></td>
+    <td><p align="center"><i><%= link_to house.yearbuild, edit_house_path(house) %></i></td>
+    <td><p align="center"><i><%= link_to house.material_wall, edit_house_path(house) %></i></td>
+    <td><p align="center"><i><%= link_to house.material_krovl, edit_house_path(house) %></i></td>
+     <td style="border: none;">
+    <%= link_to 'Видалити', house, confirm: 'Ви впевнені?', method: :delete %></td>
+
+</tr>
+
+  
+  
+</table>
+
+ <br/>  
+ <hr align="center" width="100%" color="#C0C0C0" /> 
+ 
+<%@prophouses=House.find(house.id).prophouses.order('datezap DESC').paginate(:page => params[:page], :per_page => 3)%>
+
+<div class="digg_pagination">
+    <div clas="page_info">
+      <%= page_entries_info @prophouses %>
+    </div>
+    <%= will_paginate @prophouses, :container => false %>
+  </div> 
+<table>
+<tr>
+   
+<td width="10%"><p align="center"><i><b>Дата обходу</b></i></td>
+<td width="5%"><p align="center"><i><b>Загальна площа,м2</b></i></td>
+<td width="5%"><p align="center"><i><b>З неї площа літніх приміщень, м2</b></i></td>
+<td width="5%"><p align="center"><i><b>Житлова площа, м2</b></i></td>
+<td width="5%"><p align="center"><i><b>Кількість житлових кімнат</b></i></td>
+<td width="5%"><p align="center"><i><b>Водо- провод</b></i></td>
+<td width="5%"><p align="center"><i><b>Кана- лізація</b></i></td>
+<td width="5%"><p align="center"><i><b>Опалення</b></i></td>
+<td width="5%"><p align="center"><i><b>Гаряче водо- постачання</b></i></td>
+<td width="5%"><p align="center"><i><b>Ванна/ душова</b></i></td>
+<td width="5%"><p align="center"><i><b>Природний газ</b></i></td>
+<td width="5%"><p align="center"><i><b>Скраплений газ</b></i></td>
+<td width="5%"><p align="center"><i><b>Електрична плита</b></i></td>
+<td width="15%"><p align="center"><i><b>Відповідальна особа</b></i></td>
+
+</tr>
+
+
+ <% @prophouses.each do |prop| %>
+  <tr>
+    <td><p align="center"><i><%= link_to  prop.datezap, edit_prophouse_path(prop) %></i></td>
+    <td><p align="center"><i><%= prop.s %></i></td>
+    <td><p align="center"><i><%= prop.s_summer %></i></td>
+    <td><p align="center"><i><%= prop.s_jitlova %></i></td>
+    <td><p align="center"><i><%= prop.n_room %></i></td>
+    <td><p align="center"><%= check_box_tag('water', prop.water, prop.water, {:disabled => true})%></td>    
+    <td><p align="center"><%= check_box_tag('kanal', prop.kanaliz, prop.kanaliz, {:disabled => true}) %></td>
+    <td><p align="center"><%= check_box_tag('otop', prop.otoplen, prop.otoplen, {:disabled => true}) %></td>
+    <td><p align="center"><%= check_box_tag('hwater', prop.hot_water, prop.hot_water, {:disabled => true}) %></td>
+    <td><p align="center"><%= check_box_tag('bath', prop.bath, prop.bath, {:disabled => true}) %></td>
+    <td><p align="center"><%= check_box_tag('gas', prop.gas, prop.gas, {:disabled => true}) %></td>
+    <td><p align="center"><%= check_box_tag('sgas', prop.sgas, prop.sgas, {:disabled => true}) %></td>
+    <td><p align="center"><%= check_box_tag('el_plita', prop.el_plita, prop.el_plita, {:disabled => true}) %></td>
+    <td><p align="center"><i><%= prop.otvetstv %></i></td>
+  
+   </tr>
+
+<% end %>
+</table>
+
+<% end %>
+
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Погосподарський облік</title>
+  <%= stylesheet_link_tag    "jquery-ui.css" %>
+  <%= stylesheet_link_tag    "pagination.css" %>  
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "foother.js" %>  
+  <%= csrf_meta_tags %>
+  
+  <script type = "text/javascript">
+  function run() {
+   jQuery('div.first').css('min-height',(getClientHeight() - 50 - parseInt(jQuery('div.second').css('height')))+'px');
+  };
+  window.onresize = run;
+  </script>
+</head>
+<body>
+
+<div class="first">
+
+  <header>
+    <div id='gerc_attic'>
+      <div id='span'>
+        <strong>ММБГД (Погосподарський облік)</strong>        
+      </div>
+      <div class="gerc_uplink">
+        <div class="gerc_uplink_text_r">
+            <%= render 'layouts/app_user' %>
+        </div>
+        <div class="gerc_uplink_text">
+        <%= link_to "Архів рішень", '/arxivs'  %>
+        </div>
+      </div>      
+    </div>
+   </header>
+
+  <div id="gerc_fon">
+     <%= yield %>
+  </div>
+</div> 
+<div class="second">
+<script type = "text/javascript">
+ run();
+</script>
+     <div id="gerc_basement" align="right">Версія 1.4.7.22.5<br/>&copy; BlomInfo-Ukraine 2012</div>
+  </div>   
+  
+    
+</body>
+</html>

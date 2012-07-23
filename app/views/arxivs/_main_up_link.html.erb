@@ -1,0 +1,4 @@
+  <%if user_in%>
+    <%= link_to "#{t :my_add_arxiv}", new_arxiv_path %>
+  <% end %>
+  <%= link_to "#{t :my_all_arxiv}", url_for(:action => "showall"), :remote=>true %>

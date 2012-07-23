@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  fullname: MyText
+  pgo_id: 1
+  num_1: 1
+  num_2: 1
+  rada_id: 1
+  fulladdress: MyText
+
+two:
+  fullname: MyText
+  pgo_id: 1
+  num_1: 1
+  num_2: 1
+  rada_id: 1
+  fulladdress: MyText

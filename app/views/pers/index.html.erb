@@ -1,0 +1,18 @@
+
+<%= link_to 'Додати члена домогосподарства', new_per_path(:id => @pgo.id) %> <br/>
+ <hr align="center" width="100%" color="#C0C0C0" /> 
+ </br>
+
+<% case @pgo.num_2 %>
+ <% when 1 then %> 
+ <%= render 'ind1' %>
+ <% when 2 then %>
+ <%= render 'ind2' %>
+ <% else %>
+ <%= render 'ind' %>
+<%end%>  
+
+
+
+
+

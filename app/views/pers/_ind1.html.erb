@@ -1,0 +1,87 @@
+
+<% if @pers.count != 0 then %>
+<table>
+<tr>
+  
+  
+  
+<td width ="5%" rowspan="3"><p align="center"><i><b>Прізвище</b></i></td>
+<td width ="5%" rowspan="3"><p align="center"><i><b>Ім'я</b></i></td>
+<td width ="6%" rowspan="3"><p align="center"><i><b>По батькові</b></i></td>
+<td rowspan="3"><p align="center"><i><b>Дата &shy; народження</b></i></td>
+<td rowspan="3"><p align="center"><i><b>Стать</b></i></td>
+<td rowspan="3"><p align="center"><i><b>Сімейні &shy;відносини</b></i></td>
+<td rowspan="3"><p align="center"><i><b>Місце роботи</b></i></td>
+<td colspan="7"><p align="center"><i><b>Земельна &shy;ділянка, &shy; га</b></i></td>
+
+<td rowspan="3"><p align="center"><i><b>Пен&shy;сія</b></i></td>
+<td rowspan="3"><p align="center"><i><b>Інва&shy;лід&shy;ність</b></i></td>
+<td rowspan="3"><p align="center"><i><b>Соці&shy;альна &shy;допо&shy;мога</b></i></td>
+<td rowspan="3"><p align="center"><i><b>Повне вибуття</b></i></td>
+
+</tr>
+<tr>
+<td  rowspan="2"><p align="center"><i><b>Всього</b></i></td>
+<td colspan="3"><p align="center"><i><b>з неї за цільовим призначенням для</b></i></td>
+<td colspan="2"><p align="center"><i><b>з них</b></i></td>
+<td  rowspan="2"><p align="center"><i><b>Додаткові відо&shy;мості</b></i></td>
+</tr>
+<tr>
+<td><p align="center"><i><b>О.Ж.Б.</b></i></td>
+<td><p align="center"><i><b>О.С.Г.</b></i></td>
+<td><p align="center"><i><b>Т.В.</b></i></td>
+<td><p align="center"><i><b>взятих в оренду</b></i></td>
+<td><p align="center"><i><b>наданих в оренду</b></i></td>
+
+
+
+<!--
+<td><p align="center"><i><b>будів&shy;ництва,&shy; обслуго&shy;вування житло&shy;вого&shy; будинку</b></i></td>
+<td><p align="center"><i><b>ведення&shy; осо&shy;бис&shy;того&shy; селян&shy;ського&shy; госпо&shy;дарства</b></i></td>
+<td><p align="center"><i><b>ведення&shy; товар&shy;ного&shy; сільсько-&shy;госпо&shy;дарского&shy; вироб&shy;ництва</b></i></td>
+<td><p align="center"><i><b>узя&shy;тих&shy; у оренду</b></i></td>
+<td><p align="center"><i><b>від&shy;даних&shy; у оренду</b></i></td>
+
+
+-->
+
+</tr>
+
+<%end%>
+ <% @pers.each do |per| %>
+  
+
+<tr>
+    <td><p align="center"><i><%= link_to per.surname, edit_per_path(per)  %></i></td>
+    <td><p align="center"><i><%= link_to per.name, edit_per_path(per)   %></i></td>
+    <td><p align="center"><i><%= link_to per.midname, edit_per_path(per)   %></i></td>
+    <td><p align="center"><i><%= per.borndate %></i></td>
+    <td><p align="center"><i><%= if per.sex then 'Чол.' else 'Жін.' end %></i></td>
+    <td><p align="center"><i><%= per.family %></i></td>    
+    <td><p align="center"><i><%= per.job %></i></td>    
+    <td><p align="center"><i><%= per.s_all %></i></td> 
+    <td><p align="center"><i><%= per.s_build %></i></td> 
+    <td><p align="center"><i><%= per.s_osob_gosp %></i></td> 
+    <td><p align="center"><i><%= per.s_tov_gosp %></i></td> 
+    <td><p align="center"><i><%= per.s_arenda %></i></td> 
+
+    <td><p align="center"><i><%= per.s_arenda1 %></i></td>     
+    <td><p align="center"><i><%= per.s_pay %></i></td>     
+    <td><p align="center"><i><%= if per.pensiya then "Так" else "Ні" end %></i></td>     
+    <td><p align="center"><i><%= if  per.invalidnost then "Так" else "Ні" end  %></i></td>     
+    <td><p align="center"><i><%= if  per.soc_help then "Так" else "Ні" end  %></i></td>     
+    <td><p align="center"><i><%= if  per.full_vibil then "Так" else "Ні" end  %></i></td>       
+
+
+   
+     <td style="border: none;">
+    <%= link_to 'Видалити', per, confirm: 'Ви впевнені?', method: :delete %></td>
+
+</tr>
+
+  
+  
+
+
+<%end%>
+</table>

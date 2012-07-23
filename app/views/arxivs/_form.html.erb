@@ -1,0 +1,83 @@
+<%= form_for(@arxiv, :url => {:action => :chengerada}) do |f| %>
+<div class="field">
+    <%= f.label "#{t :my_show_rada}" %>
+    
+    <%if current_user.council_id.to_i > 0 %>  
+      <% @currada = Council.find(current_user.council_id) %>
+      <%= f.label @currada.name %> 
+    <%else%>
+      <%= f.collection_select(:rada_id, Council.order('id'), :id, :name, {:selected => $g_rada_id},{:onchange => 'submit()'}) %>
+    <%end%>
+  </div>
+<%end%>
+
+
+<%= form_for(@arxiv) do |f| %>
+  <% if @arxiv.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@arxiv.errors.count, "зауважень,") %> обов'язкового заповнення потребують наступні поля:</h2>
+
+      <ul>
+      <% @arxiv.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label "#{t :my_form_numses}" %>
+    <%= f.text_field :numses %>
+    <%= f.label "#{t :my_form_numsoz}" %>
+    <%= f.text_field  :numsoz%>
+    
+  </div>
+  <div class="field">
+    <%= f.label "#{t :my_show_numrich}" %>
+    <%= f.text_field  :numrich%>
+    <%= f.label "#{t :my_form_vid}" %>
+    <%= f.date_select :dateprin ,:start_year => 1991, :end_year => Time.now.year%>
+  </div>
+
+  <div class="field">
+    <%= f.label "#{t :my_show_shodo}" %>
+    <%= f.text_area :shodo, :size => "60x3" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "#{t :my_show_per}" %>
+    <%= f.text_field :typefile, data: {autocomplete_source: url_for(:controller=>'arxivs',:action => 'getper')}  %>
+  </div>
+
+  <div class="field">
+    <%= f.label "#{t :my_show_land}" %>
+    <%= f.text_field :linkfile, data: {autocomplete_source: url_for(:controller=>'arxivs',:action => 'getadr')} %>
+  </div>
+
+  <div class="field">
+    <%= f.label "#{t :my_show_comment}" %>
+    <%= f.text_area :comment,  :size => "60x3"  %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "#{t :my_form_save}" %>
+  </div>
+
+  <hr align="center" width="60%" color="#C0C0C0" />
+
+  <div id="imgs" align="center">
+    <%= render :partial => "img", :collection => @imgs %>
+  </div>
+<% end %>
+ 
+<%= form_for(@img, :url => {:controller => :imgs, :action => :create},:html => {:multipart => true }, :remote => true) do |i| %>
+  <div class="addimage">
+    <%=i.file_field("uploaded_picture")%>
+    <%= i.submit "#{t :my_form_addimg}" %>
+  </div>  
+<%end%>
+
+
+
+  
+

@@ -1,0 +1,29 @@
+<%= form_for(@council) do |f| %>
+  <% if @council.errors.any? %>
+    <div id="error_explanation">
+      <h2>Помилок: <%= @council.errors.count %>. Необхідно виправити наступне:</h2>      
+
+
+      <ul>
+      <% @council.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label 'Назва ради' %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label 'Тип'%><br />
+    <%= f.text_field :typ %>
+  </div>
+ 
+  </br> 
+
+  <div class="actions" align="center">
+    <%= f.submit 'Прийняти'%>
+  </div>
+<% end %>

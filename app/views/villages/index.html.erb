@@ -1,0 +1,44 @@
+
+<%= link_to 'Додати', :action => "new", :council => params[:council] %>
+<%=  render :partial => 'allpgo/goadmin'%>
+<h1>Населені пункти</h1>
+  <hr align="center" width="100%" color="#C0C0C0" /> 
+<%if access_role then %>  
+<%=form_for :Council, :url => {:action => :selcouncil} do |f|%>
+<b> Рада:</b> <br/>
+<%= f.collection_select(:id, Council.order('id'), :id, :name, {:selected => @council.id},{:onchange => 'submit()'})%>
+
+<%= number_field_tag("council", @council.id, {:type => "hidden"}) %>
+
+ <%end else%>
+
+
+<b> Рада:</b> <%=  @council.name %>
+
+<%end%>
+
+
+  <table align="center">
+<tr>
+<td  width="30%"><p align="center"><i><b>Назва</b></i></td>
+<td  width="30%"><p align="center"><i><b>Поштовий індекс</b></i></td>
+
+</tr>
+
+
+<% @villages.each do |village| %>
+  <tr>
+
+    <td><p align="center"><%=  link_to village.fullname, edit_village_path({:id => village.id}) %> </td>
+    <td><p align="center"><%= link_to village.poshta, edit_village_path({:id => village.id})  %></td>
+   
+
+
+  </tr>
+<% end %>
+</table> 
+<hr align="center" width="100%" color="#C0C0C0" /> 
+
+
+
+

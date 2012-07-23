@@ -1,0 +1,15 @@
+<%= link_to 'До списку', pgos_path({:book => @book.id, :page => @page}) %>
+<%=  render :partial => 'allpgo/goadmin'%>
+<h1>Новий об'єкт погосподарського обліку</h1>
+ <hr align="center" width="100%" color="#C0C0C0" /> 
+<p>
+  <b>Рада:</b>
+  <%=  @council.name.to_s %>
+</p>
+<p>
+  <b>Книга:</b>
+  <%=  @book.numformat %>
+</p>
+<%= render 'form' %>
+</br>
+ <hr align="center" width="100%" color="#C0C0C0" /> 

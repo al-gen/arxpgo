@@ -1,0 +1,18 @@
+
+<%=  render :partial => 'goadmin'%>
+
+
+<h1>Редагувати члена домогосподарства</h1>
+<hr align="center" width="100%" color="#C0C0C0" /> 
+<% case Pgo.find(@per.pgo_id).num_2 %>
+ <% when 1 then %> 
+ <%= render 'form1' %>
+ <% when 2 then %>
+ <%= render 'form2' %>
+ <% else %>
+ <%= render 'form' %>
+<%end%>
+
+</br>
+ <hr align="center" width="100%" color="#C0C0C0" />
+

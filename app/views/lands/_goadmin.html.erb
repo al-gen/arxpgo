@@ -1,0 +1,8 @@
+<%= link_to "До об'єкту", pgo_path({:id =>  @pgo.id, :pan => 2}) %>
+<%= link_to "До списку", pgos_path({:book => @pgo.book_id, :page => getnumpage(@pgo.id, @pgo.book_id, 5)})%>
+<%= link_to "До книг", books_path({:council => Book.find(@pgo.book_id).rada_id, :page => getbookpage(@pgo.book_id, 5)}) %>
+<%= link_to 'До головних операцій', :action => "index", :controller => "allpgo" %>
+<%= link_to 'До адміністративних елементів', :action => "funcadmin", :controller => "allpgo" %><h2 align="right"> Номер об'єкту: <%= @pgo.fullnum %> </h2>
+
+
+<hr align="center" width="100%" color="#C0C0C0" /> 

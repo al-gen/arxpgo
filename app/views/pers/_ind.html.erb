@@ -1,0 +1,38 @@
+
+<% if @pers.count != 0 then %>
+<table>
+<tr>
+  
+  
+  
+<td width ="5%"><p align="center"><i><b>Прізвище</b></i></td>
+<td width ="5%"><p align="center"><i><b>Ім'я</b></i></td>
+<td width ="6%"><p align="center"><i><b>По батькові</b></i></td>
+<td><p align="center"><i><b>Адреса реєстрації місця проживання</b></i></td>
+<td><p align="center"><i><b>Кількість власників</b></i></td>
+
+
+</tr>
+<%end%>
+ <% @pers.each do |per| %>
+  
+
+<tr>
+    <td><p align="center"><i><%= link_to per.surname, edit_per_path(per)   %></i></td>
+    <td><p align="center"><i><%= link_to per.name, edit_per_path(per)   %></i></td>
+    <td><p align="center"><i><%= link_to per.midname, edit_per_path(per)   %></i></td>
+    <td><p align="center"><i><%= per.address_reg %></i></td>    
+    <td><p align="center"><i><%= per.count_men %></i></td>    
+
+   
+     <td style="border: none;">
+    <%= link_to 'Видалити', per, confirm: 'Ви впевнені?', method: :delete %></td>
+
+</tr>
+
+  
+  
+
+
+<%end%>
+</table>
