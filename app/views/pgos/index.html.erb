@@ -21,7 +21,7 @@
 <%end%>
 <br/>
 <%=form_for :Book, :url => {:action => :selbook} do |f|%>
-<b> Оберить книгу:</b>
+<b> Оберіть книгу:</b>
 <%=  f.collection_select(:id, @council.books.order('num'), :id, :numformat, { :selected => @book_id},{:onchange => 'submit()'}) %>
 <%= number_field_tag("council", @council.id, {:type => "hidden"}) %>
 <%end%>
@@ -31,8 +31,8 @@
 
   <table>
 <tr>
-<td style="border: solid black 1px" width="10%"><p align="center"><i><b>Номер об'екту</b></i></td>
-<td style="border: solid black 1px" width="10%"><p align="center"><i><b>Тип об'екту</b></i></td>
+<td style="border: solid black 1px" width="10%"><p align="center"><i><b>Номер об'єкту</b></i></td>
+<td style="border: solid black 1px" width="10%"><p align="center"><i><b>Тип об'єкту</b></i></td>
 <td style="border: solid black 1px" width="20%"><p align="center"><i><b>Дата обходу</b></i></td>
 <td style="border: solid black 1px" width="10%"><p align="center"><i><b>Відповідальна особа</b></i></td>
 <td style="border: solid black 1px" width="20%"><p align="center"><i><b>Адреса</b></i></td>

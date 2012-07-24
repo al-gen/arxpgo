@@ -33,8 +33,8 @@
     <td><p align="center"><i><b><%= f.date_select :borndate, { :include_blank => true, :start_year => 1900, :end_year => Time.now.year}%></b></i></td>
     <td><p align="center"><i>
           
-          <b>Чоловік</br><%= f.radio_button :sex, "true" %></br>
-           <b> Жінка</br><%= f.radio_button :sex, "false" %></b>
+          <b>чоловіча</br><%= f.radio_button :sex, "true" %></br>
+           <b>жіноча</br><%= f.radio_button :sex, "false" %></b>
           
           
           </b></i></td> 
@@ -59,21 +59,11 @@
 <td  rowspan="2"><p align="center"><i><b>Дата закінчення</b></i></td>
 </tr>
 <tr>
-<td><p align="center"><i><b>О.Ж.Б.</b></i></td>
-<td><p align="center"><i><b>О.С.Г.</b></i></td>
-<td><p align="center"><i><b>Т.В.</b></i></td>
+<td><p align="center"><i><b>будів&shy;ництва, обслуго&shy;вування житло&shy;вого будинку</b></i></td>
+<td><p align="center"><i><b>ведення осо&shy;бис&shy;того селян&shy;ського госпо&shy;дарства</b></i></td>
+<td><p align="center"><i><b>ведення товар&shy;ного сільсько-госпо&shy;дарського вироб&shy;ництва</b></i></td>
 <td><p align="center"><i><b>взятих в оренду</b></i></td>
 <td><p align="center"><i><b>наданих в оренду</b></i></td>
-
-<!--
-<td><p align="center"><i><b>будів&shy;ництва,&shy; обслуго&shy;вування житло&shy;вого&shy; будинку</b></i></td>
-<td><p align="center"><i><b>ведення&shy; осо&shy;бис&shy;того&shy; селян&shy;ського&shy; госпо&shy;дарства</b></i></td>
-<td><p align="center"><i><b>ведення&shy; товар&shy;ного&shy; сільсько-&shy;госпо&shy;дарского&shy; вироб&shy;ництва</b></i></td>
-<td><p align="center"><i><b>узя&shy;тих&shy; у оренду</b></i></td>
-<td><p align="center"><i><b>від&shy;даних&shy; у оренду</b></i></td>
-
-
--->
 
 
 
@@ -101,7 +91,7 @@
 <td width="10%"><p align="center"><i><b>Відмітка про повне вибуття</b></i></td>
 <td width="10%"><p align="center"><i><b>Відомості про пенсію</b></i></td>
 <td width="10%"><p align="center"><i><b>Відмітка про прибуття на територію ради</b></i></td>
-<td width="10%"><p align="center"><i><b>Персональніий рахунок</b></i></td>
+<td width="10%"><p align="center"><i><b>Персональний рахунок</b></i></td>
 <td width="30%"><p align="center"><i><b>Дата заповнення</b></i></td>
 </tr>
 <tr>
@@ -128,10 +118,10 @@
   <td><p align="left"><i>
     <%= f.check_box :pensiya %><b>На пенсії</b><br/>
     <%= f.check_box :invalidnost %><b>Має інвалідність</b><b/>
-    <%= f.check_box :soc_help %><b>Льготи</b><br/><br/>
+    <%= f.check_box :soc_help %><b>Пільги</b><br/><br/>
      <b>Додаткова інформація</b><br/><p align="center"><%= f.text_area :comment_lgoti,  :size => "15x10"   %></b></i></td>
 <td><p align="center"><i><b> 
-      <b>Регістрація на території ради</b><br/> <%= f.date_select :date_regist, { :include_blank => true, :start_year => 1950}%><br/>
+      <b>Реєстрація на території ради</b><br/> <%= f.date_select :date_regist, { :include_blank => true, :start_year => 1950}%><br/>
       <b>Попереднє місце реєстрації</b><br/><%= f.text_area :address_pred_regist , :size => "30x13" %></b></i></td>
 
  

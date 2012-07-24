@@ -8,11 +8,11 @@
 <td width ="5%" rowspan="3"><p align="center"><i><b>Прізвище</b></i></td>
 <td width ="5%" rowspan="3"><p align="center"><i><b>Ім'я</b></i></td>
 <td width ="6%" rowspan="3"><p align="center"><i><b>По батькові</b></i></td>
-<td rowspan="3"><p align="center"><i><b>Дата &shy; народження</b></i></td>
+<td rowspan="3"><p align="center"><i><b>Дата народження</b></i></td>
 <td rowspan="3"><p align="center"><i><b>Стать</b></i></td>
-<td rowspan="3"><p align="center"><i><b>Сімейні &shy;відносини</b></i></td>
+<td rowspan="3"><p align="center"><i><b>Сімейні відносини</b></i></td>
 <td rowspan="3"><p align="center"><i><b>Місце роботи</b></i></td>
-<td colspan="7"><p align="center"><i><b>Земельна &shy;ділянка, &shy; га</b></i></td>
+<td colspan="7"><p align="center"><i><b>Земельна ділянка, га</b></i></td>
 
 <td rowspan="3"><p align="center"><i><b>Пен&shy;сія</b></i></td>
 <td rowspan="3"><p align="center"><i><b>Інва&shy;лід&shy;ність</b></i></td>
@@ -27,23 +27,14 @@
 <td  rowspan="2"><p align="center"><i><b>Додаткові відо&shy;мості</b></i></td>
 </tr>
 <tr>
-<td><p align="center"><i><b>О.Ж.Б.</b></i></td>
-<td><p align="center"><i><b>О.С.Г.</b></i></td>
-<td><p align="center"><i><b>Т.В.</b></i></td>
+<td><p align="center"><i><b>будів&shy;ництва, обслуго&shy;вування житло&shy;вого будинку</b></i></td>
+<td><p align="center"><i><b>ведення осо&shy;бис&shy;того селян&shy;ського госпо&shy;дарства</b></i></td>
+<td><p align="center"><i><b>ведення товар&shy;ного сільсько-госпо&shy;дарського вироб&shy;ництва</b></i></td>
 <td><p align="center"><i><b>взятих в оренду</b></i></td>
 <td><p align="center"><i><b>наданих в оренду</b></i></td>
 
 
 
-<!--
-<td><p align="center"><i><b>будів&shy;ництва,&shy; обслуго&shy;вування житло&shy;вого&shy; будинку</b></i></td>
-<td><p align="center"><i><b>ведення&shy; осо&shy;бис&shy;того&shy; селян&shy;ського&shy; госпо&shy;дарства</b></i></td>
-<td><p align="center"><i><b>ведення&shy; товар&shy;ного&shy; сільсько-&shy;госпо&shy;дарского&shy; вироб&shy;ництва</b></i></td>
-<td><p align="center"><i><b>узя&shy;тих&shy; у оренду</b></i></td>
-<td><p align="center"><i><b>від&shy;даних&shy; у оренду</b></i></td>
-
-
--->
 
 </tr>
 
@@ -56,7 +47,7 @@
     <td><p align="center"><i><%= link_to per.name, edit_per_path(per)   %></i></td>
     <td><p align="center"><i><%= link_to per.midname, edit_per_path(per)   %></i></td>
     <td><p align="center"><i><%= per.borndate %></i></td>
-    <td><p align="center"><i><%= if per.sex then 'Чол.' else 'Жін.' end %></i></td>
+    <td><p align="center"><i><%= if per.sex then 'чоловіча' else 'жіноча' end %></i></td>
     <td><p align="center"><i><%= per.family %></i></td>    
     <td><p align="center"><i><%= per.job %></i></td>    
     <td><p align="center"><i><%= per.s_all %></i></td> 

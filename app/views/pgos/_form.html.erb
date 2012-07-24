@@ -51,7 +51,7 @@
     <td><p align="center"><i><b>
             
             
-<b>Населенний пункт</b><br/>
+<b>Населений пункт</b><br/>
 <%= collection_select(:Village, :id, Council.find(@council.id).villages.order('id'), :id, :name_ukr, {:selected => @addre.city_id},{:onchange => 'submit("addres")'})%> <br/>
 <b>Вулиця</b><br/>
 <%= collection_select(:Road, :id, Village.find(@addre.city_id).roads.order('id'), :id, :fullroad, {:selected => @addre.street_id},{:onchange => 'submit("addres")'})%><br/>
