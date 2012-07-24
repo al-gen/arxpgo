@@ -55,7 +55,7 @@
     <td style="border: solid black 1px"><p align="center"><%= link_to pgo.num_2 , pgo_path({:id => pgo.id, :pan => 0}) %></td>
     <td style="border: solid black 1px"><p align="center"><%= pgo.datezap %></td>
     <td style="border: solid black 1px"><p align="center"><%= pgo.otvetstv  %></td>
-     <td style="border: solid black 1px"><p align="center"> <%=  link_to_if  (not pgo.address_id == nil), Addre.find(pgo.address_id).addresfull , pgo_path({:id => pgo.id, :pan => 0}) %></td>
+     <td style="border: solid black 1px"><p align="center"> <%=  link_to Addre.find(pgo.address_id).addresfull , pgo_path({:id => pgo.id, :pan => 0}) %></td>
      <td style="border: solid black 1px"><p align="center"><%=  pgo.comment %></td>
      
 
