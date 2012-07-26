@@ -59,6 +59,7 @@ class PgosController < ApplicationController
 
     end    
     @pgo = Pgo.find(params[:id])
+    
     @book = Book.find(@pgo.book_id)
     @council = Council.find(@book.rada_id)
     if not ((get_role == @council.id) or (get_role == 0)) then
@@ -69,6 +70,11 @@ class PgosController < ApplicationController
   
   def shows
     @pgo = Pgo.find(params[:id])
+    if @pgo.num_2 == 1 then
+       @per = @pgo.pers.find(:first, :conditions => ["family ilike :input",{:input => "голова"}])
+    else
+      @per = @pgo.pers.order('id').first
+    end  
     @book = Book.find(@pgo.book_id)
     @council = Council.find(@book.rada_id)   
     @addre =  Addre.find(@pgo.address_id) 

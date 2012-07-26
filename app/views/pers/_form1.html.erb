@@ -30,7 +30,13 @@
     <td><p align="center"><i><b><%= f.text_field :surname %></b></i></td>
     <td><p align="center"><i><b><%= f.text_field :name %></b></i></td>
     <td><p align="center"><i><b><%= f.text_field :midname %></b></i></td>
-    <td><p align="center"><i><b><%= f.date_select :borndate, { :include_blank => true, :start_year => 1900, :end_year => Time.now.year}%></b></i></td>
+    <td><p align="center"><i><b>
+<%= select_day(@per.bornday, { :include_blank => true, :start_year => 1900, :end_year => Time.now.year},{})%></b></i>
+<%= select_month(@per.bornmonth, { :include_blank => true, :start_year => 1900, :end_year => Time.now.year},{})%></b></i>
+<%= select_year(@per.bornyear, { :include_blank => true, :start_year => 1900, :end_year => Time.now.year},{})%></b></i>
+    
+    
+    </td>
     <td><p align="center"><i>
           
           <b>чоловіча</br><%= f.radio_button :sex, "true" %></br>

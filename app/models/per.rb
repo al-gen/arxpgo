@@ -1,7 +1,10 @@
 class Per < ActiveRecord::Base
 set_table_name 'pers'
-attr_accessible :surname, :name, :midname, :borndate, :sex, :family, :job, :s_all, :s_build, :s_osob_gosp, :s_tov_gosp, :s_arenda, :s_arenda1, :s_pay,
-:date_begin_hoz, 
+attr_accessible :surname, :name, :midname,  :sex, :family, :job, :s_all, :s_build, :s_osob_gosp, :s_tov_gosp, :s_arenda, :s_arenda1, :s_pay,
+ :bornday,
+ :bornmonth,
+ :bornyear,
+ :date_begin_hoz, 
  :date_end_hoz,
  :date_vibil,
  :prichina_vibil,
@@ -34,5 +37,14 @@ validates :count_men, :numericality => {:only_integer => true}, :allow_blank => 
 def fullname
  "#{self.surname} #{self.name} #{self.midname}"
 end
+
+  def borndate
+    if self.bornday.to_s != "" then d = self.bornday.to_s.rjust(2,'0') else d = "xx"  end
+    if self.bornmonth.to_s != "" then m = self.bornmonth.to_s.rjust(2,'0') else m = "xx"  end    
+    if self.bornyear.to_s != "" then y = self.bornyear.to_s else y = "xxxx"  end    
+      "#{d}.#{m}.#{y}"
+  end  
+    
+ 
   
 end

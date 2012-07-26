@@ -41,6 +41,9 @@ class PersController < ApplicationController
   # POST /pers.json
   def create
     @pgo = Pgo.find(params[:pgo])
+      params[:per][:bornday] = params[:date][:day]
+      params[:per][:bornmonth] = params[:date][:month]
+      params[:per][:bornyear] = params[:date][:year]       
     @per = @pgo.pers.build(params[:per])
 
  
@@ -60,7 +63,13 @@ class PersController < ApplicationController
     
     @per = Per.find(params[:id])
     @pgo = Pgo.find(@per.pgo_id)
-  
+      params[:per][:bornday] = params[:date][:day]
+      params[:per][:bornmonth] = params[:date][:month]
+      params[:per][:bornyear] = params[:date][:year]    
+
+#      params[:per][:bornday] = params[:per][:"borndate(3i)"]
+#      params[:per][:bornmonth] = params[:per][:"borndate(2i)"]
+#      params[:per][:bornyear] = params[:per][:"borndate(1i)"]
       if @per.update_attributes(params[:per]) then
        redirect_to pgo_path({:id =>  @pgo.id, :pan => 1}), notice: 'Інформацію успішно оновлено.'
        

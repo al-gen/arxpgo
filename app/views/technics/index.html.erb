@@ -2,6 +2,7 @@
  <%= link_to 'Додати обхід', new_technic_path(:id => @pgo.id) %>
  <hr align="center" width="100%" color="#C0C0C0" /> 
  <br/>  
+ <%if @technics.count != 0 then%>
 <div class="digg_pagination">
     <div clas="page_info">
       <%= page_entries_info @technics %>
@@ -46,4 +47,5 @@
 <br/>
 
 <% end %> 
+<%end%>
   

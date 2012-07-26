@@ -3,7 +3,12 @@
 
 <%= link_to "До списку", pgos_path({:book => @book.id, :page => getnumpage(@pgo.id, @book.id, 5)})%>
 <%= link_to_if (@book != nil), "До книг", books_path({:council => @council.id, :page => getbookpage(@book.id, 5)}) %>
-<%=  render :partial => 'allpgo/goadmin'%>
+<%= link_to 'До головних операцій', :action => "index", :controller => "allpgo" %>
+<%= link_to 'До адміністративних елементів', :action => "funcadmin", :controller => "allpgo" %>
+
+<b align="right">  Номер об'єкту <%= @pgo.fullnum %> </b>
+<hr align="center" width="100%" color="#C0C0C0" /> 
+
  <p id="notice"><%#= notice %></p>
 <ul class="css-tabs">
   <li><a href=  <%=  "/pgos/shows?id=#{@pgo.id}" %> > Адреса об'єкту</a></li>
